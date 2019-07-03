@@ -46,7 +46,7 @@ const paths = {
     },
     content: {
       src: './src/assets/content/*.*',
-      dest: './build/assets/fonts/'
+      dest: './build/assets/content/'
     }
 }
 

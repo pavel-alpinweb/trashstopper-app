@@ -1,1 +1,1 @@
-console.log('Hello world!');
+console.log('А ты! Да, ты! Убрал мусор у себя в городе?');
