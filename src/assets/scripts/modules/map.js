@@ -1,7 +1,7 @@
 import view from './view';
 
 // Дождёмся загрузки API и готовности DOM.
-const myMap = ymaps.ready(init);
+ymaps.ready(init);
 function init () {
     // Создание экземпляра карты и его привязка к контейнеру с
     // заданным id ("map").
@@ -15,9 +15,6 @@ function init () {
     });
     map.events.add('click', (e)=>{
         const coords = e.get('coords');
-        console.log(coords);
         view.createPlace(map, coords);
     });
 }
-
-export default myMap;
