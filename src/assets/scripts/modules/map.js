@@ -1,19 +1,23 @@
 import view from './view';
 
 // Дождёмся загрузки API и готовности DOM.
-var myMap = ymaps.ready(init);
+const myMap = ymaps.ready(init);
 function init () {
     // Создание экземпляра карты и его привязка к контейнеру с
     // заданным id ("map").
-    var map = new ymaps.Map('map', {
+    const map = new ymaps.Map('map', {
         // При инициализации карты обязательно нужно указать
         // её центр и коэффициент масштабирования.
-        center: [55.76, 37.64], // Москва
-        zoom: 10
+        center: [42.8736, 74.6057], // Москва
+        zoom: 12
     }, {
         searchControlProvider: 'yandex#search'
     });
-    view.createPlace(map);
+    map.events.add('click', (e)=>{
+        const coords = e.get('coords');
+        console.log(coords);
+        view.createPlace(map, coords);
+    });
 }
 
 export default myMap;

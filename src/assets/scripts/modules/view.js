@@ -1,6 +1,6 @@
 const view = {
-    createPlace(map){
-        map.geoObjects.add(new ymaps.Placemark([55.687086, 37.529789], {
+    createPlace(map, coords){
+        map.geoObjects.add(new ymaps.Placemark(coords, {
             balloonContent: 'цвет <strong>влюбленной жабы</strong>'
         }, {
             preset: 'islands#circleIcon',
