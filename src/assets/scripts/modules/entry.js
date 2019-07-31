@@ -15,3 +15,5 @@ function init () {
         searchControlProvider: 'yandex#search'
     });
 }
+
+export default myMap;

@@ -1,2 +1,2 @@
 import "./modules/hello";
-import "./modules/map";
+import "./modules/entry";
