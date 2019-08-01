@@ -6,6 +6,10 @@ const view = {
             preset: 'islands#circleIcon',
             iconColor: '#3caa3c'
         }));
+    },
+    showForm(name, data){
+        const form = document.querySelector(`[data-form="${name}"]`);
+        form.classList.remove("hide");
     }
 };
 

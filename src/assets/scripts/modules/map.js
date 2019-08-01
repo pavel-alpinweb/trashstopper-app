@@ -15,6 +15,7 @@ function init () {
     });
     map.events.add('click', (e)=>{
         const coords = e.get('coords');
-        view.createPlacemark(map, coords, 'textAddress');
+        // view.createPlacemark(map, coords, 'textAddress');
+        view.showForm('entry');
     });
 }

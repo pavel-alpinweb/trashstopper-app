@@ -1,10 +1,9 @@
 extends ../main.layout.pug
 
 block content
-  .app-conatiner
-    #map.map
-  form.main-form.main-form--entry.hide(action="/", data-form="entry")
+    form.main-form.main-form--entry(action="/")
         .main-form__input-group
             input(type="text", placeholder="Введите название места")
         .main-form__input-group
             button Добавить место на карту
+        
