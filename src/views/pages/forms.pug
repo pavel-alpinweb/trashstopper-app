@@ -2,8 +2,32 @@ extends ../main.layout.pug
 
 block content
     form.main-form.main-form--entry(action="/")
+        legend.main-form__title Добавить новое место на карту
         .main-form__input-group
-            input(type="text", placeholder="Введите название места")
+            label(for="place-name") Название места или адрес
+            input(type="text", placeholder="Введите название места", id="place-name")
+        .main-form__input-group
+            .main-form__sub-title Выбирите тип места
+            label.main-form__radio-group
+                |Место свалки
+                input(type="radio", value="trash-place", name="place-type", data-place="trash-place") 
+            label.main-form__radio-group
+                |Очищенное место
+                input(type="radio", value="clean-place", name="place-type", data-place="clean-place") 
+            label.main-form__radio-group
+                |Мусорные контейнеры
+                input(type="radio", value="trash-box", name="place-type", data-place="trash-box") 
+        .main-form__place-menu.main-form__place-menu--place-for-cleaning
+           .main-form__gallery-item
+                .main-form__sub-title Фотографии до уборки
+                input(type="file", multiple, placeholder="Добавте фото") 
+           .main-form__gallery-item
+                .main-form__sub-title Фотографии после уборки
+                input(type="file", multiple, placeholder="Добавте фото") 
+        .main-form__place-menu.main-form__place-menu--trash-box
+            .main-form__gallery-item
+                .main-form__sub-title Фотографии мусорных контейнеров
+                input(type="file", placeholder="Добавте фото") 
         .main-form__input-group
             button Добавить место на карту
         

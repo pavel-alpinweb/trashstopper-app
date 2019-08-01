@@ -8,7 +8,7 @@ function init () {
     const map = new ymaps.Map('map', {
         // При инициализации карты обязательно нужно указать
         // её центр и коэффициент масштабирования.
-        center: [42.8736, 74.6057], // Москва
+        center: [42.8736, 74.6057], // Бишкек
         zoom: 12
     }, {
         searchControlProvider: 'yandex#search'
