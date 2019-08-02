@@ -7,10 +7,12 @@
 
 .main-form{
     width: 100%;
+    max-width: 500px;
     padding: 35px 40px;
     border-radius: 4px;
     background-color: $mainColor;
     position: relative;
+    margin: auto;
 }
 
 .main-form__title{
@@ -111,4 +113,5 @@
 .main-form__gallery {
     display: flex;
     flex-wrap: wrap;
+    margin-top: 20px;
 }

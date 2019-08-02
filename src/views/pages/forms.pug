@@ -1,9 +1,9 @@
-extends ../main.layout.pug
-
-block content
+mixin main-form()
     form.main-form.main-form--entry(action="/")
-        img.close-btn(src="assets/images/checkmark.svg", alt="")
-        legend.main-form__title Добавить новое место на карту
+        img.close-btn(src="assets/images/checkmark.svg", alt="close", data-close="close-form")
+        legend.main-form__title 
+            |Добавить новое место на карту: 
+            span(data-role="addressLine") 
         .main-form__input-group.main-form__label
             label(for="place-name") Название места или адрес
             input.main-form__input(type="text", placeholder="Введите название места", id="place-name")
@@ -20,7 +20,7 @@ block content
             label.main-form__label.main-form__label--radio-btn(for="trash-box") Мусорные контейнеры 
             .main-form__place-menu.main-form__place-menu--place-for-cleaning
                .main-form__gallery-item
-                    .main-form__sub-title Фотографии до уборки
+                    .main-form__sub-title До уборки
                     input.hide(type="file", multiple, placeholder="Добавте фото")
                     button.main-btn Добавте фото
                     .main-form__gallery
@@ -29,7 +29,7 @@ block content
                         img.photo-preview(src="http://placehold.jp/1000x1000.png", alt="")
                         img.photo-preview(src="http://placehold.jp/1000x1000.png", alt="")
                .main-form__gallery-item
-                    .main-form__sub-title Фотографии после уборки
+                    .main-form__sub-title После уборки
                     input.hide(type="file", multiple, placeholder="Добавте фото")
                     button.main-btn Добавте фото
                     .main-form__gallery
@@ -39,12 +39,12 @@ block content
                         img.photo-preview(src="http://placehold.jp/1000x1000.png", alt="")
             .main-form__place-menu.main-form__place-menu--trash-box
                 .main-form__gallery-item
-                    .main-form__sub-title Фотографии мусорных контейнеров
+                    .main-form__sub-title Мусорные контейнеры
                     input.hide(type="file", placeholder="Добавте фото") 
                     button.main-btn Добавте фото
                     .main-form__gallery
                         img.photo-preview(src="http://placehold.jp/1000x1000.png", alt="")
                         img.photo-preview(src="http://placehold.jp/1000x1000.png", alt="")
         .main-form__input-group
-            button.main-btn Добавить место на карту
+            button.main-btn Сохранить
         

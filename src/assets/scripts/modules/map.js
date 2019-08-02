@@ -16,6 +16,11 @@ function init () {
     map.events.add('click', (e)=>{
         const coords = e.get('coords');
         // view.createPlacemark(map, coords, 'textAddress');
-        view.showForm('entry');
+        ymaps.geocode(coords).then(function (res) {
+            var firstGeoObject = res.geoObjects.get(0);
+            let addressText = firstGeoObject.getAddressLine();
+            view.showForm(addressText);
+            view.initHideForm();
+        });
     });
 }

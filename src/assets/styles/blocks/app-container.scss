@@ -1,0 +1,23 @@
+.app-conatiner{
+    position: relative;
+}
+
+.app-conatiner__form-wrapper{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    position: fixed;
+    top:0;
+    left:0;
+    z-index: 9000;
+    overflow: auto;
+}
+
+.app-conatiner__hideCover{
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom: 0;
+    background-color: rgba(#ebebeb, 0.5);
+}

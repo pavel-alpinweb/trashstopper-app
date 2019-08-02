@@ -7,9 +7,20 @@ const view = {
             iconColor: '#3caa3c'
         }));
     },
-    showForm(name, data){
-        const form = document.querySelector(`[data-form="${name}"]`);
+    showForm(data){
+        const form = document.querySelector('[data-window="form-container"]');
+        const addressEl = document.querySelector('[data-role="addressLine"]');
+        addressEl.innerText = data;
         form.classList.remove("hide");
+    },
+    initHideForm(){
+        const closeBtns = document.querySelectorAll('[data-close="close-form"]');
+        for (const btn of closeBtns) {
+            btn.addEventListener('click', ()=>{
+                const form = document.querySelector('[data-window="form-container"]');
+                form.classList.add("hide");
+            });
+        }
     }
 };
 
