@@ -1,0 +1,23 @@
+.main-btn{
+    color: $white;
+    font-size: $h6fontSize;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    height: 50px;
+    border-radius: 3px;
+    background-color: $accentColor;
+    width: 100%;
+    border: 2px solid $accentColor;
+    &:hover{
+        color: $accentColor;
+        background-color: transparent;
+    }
+}
+
+.close-btn{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}

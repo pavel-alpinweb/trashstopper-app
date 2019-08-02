@@ -2,32 +2,49 @@ extends ../main.layout.pug
 
 block content
     form.main-form.main-form--entry(action="/")
+        img.close-btn(src="assets/images/checkmark.svg", alt="")
         legend.main-form__title Добавить новое место на карту
-        .main-form__input-group
+        .main-form__input-group.main-form__label
             label(for="place-name") Название места или адрес
-            input(type="text", placeholder="Введите название места", id="place-name")
+            input.main-form__input(type="text", placeholder="Введите название места", id="place-name")
         .main-form__input-group
             .main-form__sub-title Выбирите тип места
-            label.main-form__radio-group
-                |Место свалки
-                input(type="radio", value="trash-place", name="place-type", data-place="trash-place") 
-            label.main-form__radio-group
-                |Очищенное место
-                input(type="radio", value="clean-place", name="place-type", data-place="clean-place") 
-            label.main-form__radio-group
-                |Мусорные контейнеры
-                input(type="radio", value="trash-box", name="place-type", data-place="trash-box") 
-        .main-form__place-menu.main-form__place-menu--place-for-cleaning
-           .main-form__gallery-item
-                .main-form__sub-title Фотографии до уборки
-                input(type="file", multiple, placeholder="Добавте фото") 
-           .main-form__gallery-item
-                .main-form__sub-title Фотографии после уборки
-                input(type="file", multiple, placeholder="Добавте фото") 
-        .main-form__place-menu.main-form__place-menu--trash-box
-            .main-form__gallery-item
-                .main-form__sub-title Фотографии мусорных контейнеров
-                input(type="file", placeholder="Добавте фото") 
+            
+            input.radio-btn(type="radio", value="trash-place", name="place-type", data-place="trash-place", id="trash-place", checked) 
+            label.main-form__label.main-form__label--radio-btn(for="trash-place") Место свалки
+
+            input.radio-btn(type="radio", value="clean-place", name="place-type", data-place="clean-place" id="clean-place") 
+            label.main-form__label.main-form__label--radio-btn(for="clean-place") Очищенное место
+
+            input.radio-btn(type="radio", value="trash-box", name="place-type", data-place="trash-box" id="trash-box") 
+            label.main-form__label.main-form__label--radio-btn(for="trash-box") Мусорные контейнеры 
+            .main-form__place-menu.main-form__place-menu--place-for-cleaning
+               .main-form__gallery-item
+                    .main-form__sub-title Фотографии до уборки
+                    input.hide(type="file", multiple, placeholder="Добавте фото")
+                    button.main-btn Добавте фото
+                    .main-form__gallery
+                        img.photo-preview(src="http://placehold.jp/1000x1000.png", alt="")
+                        img.photo-preview(src="http://placehold.jp/1000x1000.png", alt="")
+                        img.photo-preview(src="http://placehold.jp/1000x1000.png", alt="")
+                        img.photo-preview(src="http://placehold.jp/1000x1000.png", alt="")
+               .main-form__gallery-item
+                    .main-form__sub-title Фотографии после уборки
+                    input.hide(type="file", multiple, placeholder="Добавте фото")
+                    button.main-btn Добавте фото
+                    .main-form__gallery
+                        img.photo-preview(src="http://placehold.jp/1000x1000.png", alt="")
+                        img.photo-preview(src="http://placehold.jp/1000x1000.png", alt="")
+                        img.photo-preview(src="http://placehold.jp/1000x1000.png", alt="")
+                        img.photo-preview(src="http://placehold.jp/1000x1000.png", alt="")
+            .main-form__place-menu.main-form__place-menu--trash-box
+                .main-form__gallery-item
+                    .main-form__sub-title Фотографии мусорных контейнеров
+                    input.hide(type="file", placeholder="Добавте фото") 
+                    button.main-btn Добавте фото
+                    .main-form__gallery
+                        img.photo-preview(src="http://placehold.jp/1000x1000.png", alt="")
+                        img.photo-preview(src="http://placehold.jp/1000x1000.png", alt="")
         .main-form__input-group
-            button Добавить место на карту
+            button.main-btn Добавить место на карту
         

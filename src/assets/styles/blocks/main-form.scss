@@ -1,0 +1,114 @@
+@mixin placeholder {
+    &::-webkit-input-placeholder { @content; }
+    &:-moz-placeholder           { @content; }
+    &::-moz-placeholder          { @content; }
+    &:-ms-input-placeholder      { @content; }  
+}
+
+.main-form{
+    width: 100%;
+    padding: 35px 40px;
+    border-radius: 4px;
+    background-color: $mainColor;
+    position: relative;
+}
+
+.main-form__title{
+    color: $white;
+    font-size: $textFontSize;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+}
+
+.main-form__label{
+    color: $white;
+    font-size: $textFontSize;
+    font-weight: 500;
+    display: block;
+}
+
+.main-form__input{
+    width: 100%;
+    height: 52px;
+    border-radius: 4px;
+    border: 1px solid $white;
+    padding: 0 20px;
+    background-color: transparent;
+    outline: none;
+    color:white;
+    @include placeholder{
+        color: #d8d8d8;
+        font-size: $textFontSize;
+        font-weight: 500;
+    }
+    &:focus{
+        box-shadow: 0 0 4px $accentColor;
+        border: 1px solid $accentColor;
+    }
+}
+
+.main-form__sub-title{
+    color: $white;
+    font-family: $mainFont;
+    font-size: $h5fontSize;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.main-form__input-group{
+    margin-bottom: 20px;
+}
+
+.radio-btn{
+    display: none;
+}
+
+.main-form__label--radio-btn{
+    height: 50px;
+    line-height: 46px;
+    text-align: center;
+    border-radius: 4px;
+    background-color: $accentColor;
+    display:inline-block;
+    padding: 0 28px;
+    cursor: pointer;
+    border: 2px solid $accentColor;
+    margin-bottom: 20px;
+}
+
+.radio-btn:checked + .main-form__label--radio-btn{
+    background-color: transparent;
+    color: $accentColor;
+}
+
+.main-form__place-menu{
+    display: none;
+    width:100%;
+    justify-content: space-between;
+}
+
+.main-form__gallery-item{
+    width:48%;
+    margin-left: -4px;
+    text-align: center;
+}
+
+.main-form__place-menu--trash-box{
+    .main-form__gallery-item{
+        width:100%;
+    }
+}
+
+[data-place="trash-place"]:checked ~ .main-form__place-menu--place-for-cleaning, [data-place="clean-place"]:checked ~ .main-form__place-menu--place-for-cleaning{
+    display: flex;
+}
+
+#trash-box:checked ~ .main-form__place-menu--trash-box{
+    display: flex;
+}
+
+.main-form__gallery {
+    display: flex;
+    flex-wrap: wrap;
+}
