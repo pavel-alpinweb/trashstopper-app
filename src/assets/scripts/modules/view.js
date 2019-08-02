@@ -12,7 +12,6 @@ const view = {
         const addressEl = document.querySelector('[data-role="addressLine"]');
         addressEl.innerText = data;
         form.classList.remove("hide");
-        console.log(self);
     },
     hideForm(){
         const form = document.querySelector('[data-window="form-container"]');
