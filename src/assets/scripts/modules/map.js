@@ -3,6 +3,9 @@ import view from './view';
 // Дождёмся загрузки API и готовности DOM.
 ymaps.ready(init);
 function init () {
+
+    let addressText;
+
     // Создание экземпляра карты и его привязка к контейнеру с
     // заданным id ("map").
     const map = new ymaps.Map('map', {
@@ -15,12 +18,18 @@ function init () {
     });
     map.events.add('click', (e)=>{
         const coords = e.get('coords');
-        // view.createPlacemark(map, coords, 'textAddress');
-        ymaps.geocode(coords).then(function (res) {
-            var firstGeoObject = res.geoObjects.get(0);
-            let addressText = firstGeoObject.getAddressLine();
-            view.showForm(addressText);
-            view.initHideForm();
+        ymaps.geocode(coords)
+            .then(function (res) {
+                var firstGeoObject = res.geoObjects.get(0);
+                addressText = firstGeoObject.getAddressLine();
+                view.showForm(addressText);
+                view.initHideForm();
+            });
+        const sendBtn = document.querySelector('[data-role="send-data"]');
+        sendBtn.addEventListener('click', (e)=>{
+            e.preventDefault();
+            view.createPlacemark(map, coords, addressText);
+            view.hideForm();
         });
     });
 }

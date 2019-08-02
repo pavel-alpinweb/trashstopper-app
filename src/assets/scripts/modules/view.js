@@ -12,14 +12,16 @@ const view = {
         const addressEl = document.querySelector('[data-role="addressLine"]');
         addressEl.innerText = data;
         form.classList.remove("hide");
+        console.log(self);
+    },
+    hideForm(){
+        const form = document.querySelector('[data-window="form-container"]');
+        form.classList.add("hide");
     },
     initHideForm(){
         const closeBtns = document.querySelectorAll('[data-close="close-form"]');
         for (const btn of closeBtns) {
-            btn.addEventListener('click', ()=>{
-                const form = document.querySelector('[data-window="form-container"]');
-                form.classList.add("hide");
-            });
+            btn.addEventListener('click', this.hideForm);
         }
     }
 };
