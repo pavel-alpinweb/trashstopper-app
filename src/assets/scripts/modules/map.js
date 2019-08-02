@@ -6,6 +6,7 @@ ymaps.ready(init);
 function init () {
     let coords;
     let addressText;
+    let placemark;
 
     // Создание экземпляра карты и его привязка к контейнеру с
     // заданным id ("map").
@@ -17,13 +18,14 @@ function init () {
     }, {
         searchControlProvider: 'yandex#search'
     });
+    let cluster = view.createCluster(map);
     let coordsArray = model.getAllCoords();
     for (const coords of coordsArray) {
-        view.createPlacemark(map, coords, 'text');
+        placemark = view.createPlacemark(map, coords, 'text');
+        cluster.add(placemark);
     }
     map.events.add('click', (e)=>{
         coords = e.get('coords');
-        console.log(coords);
         ymaps.geocode(coords)
             .then(function (res) {
                 var firstGeoObject = res.geoObjects.get(0);
@@ -34,7 +36,9 @@ function init () {
         const sendBtn = document.querySelector('[data-role="send-data"]');
         sendBtn.addEventListener('click', (e)=>{
             e.preventDefault();
-            view.createPlacemark(map, coords, addressText);
+            placemark = view.createPlacemark(map, coords, addressText);
+            cluster.add(placemark);
+            placemark = 0;
             view.hideForm();
         });
     });

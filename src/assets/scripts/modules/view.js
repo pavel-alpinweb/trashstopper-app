@@ -1,11 +1,27 @@
 const view = {
     createPlacemark(map, coords, textAddress){
-        map.geoObjects.add(new ymaps.Placemark(coords, {
+        let placemark = new ymaps.Placemark(coords, {
             balloonContent: `<button>${textAddress}</button>`
         }, {
             preset: 'islands#circleIcon',
             iconColor: '#3caa3c'
-        }));
+        });
+        map.geoObjects.add(placemark);
+        console.log(placemark);
+        return placemark;
+    },
+    createCluster(map){
+        const cluster = new ymaps.Clusterer({ 
+            clusterDisableClickZoom: true,
+            clusterOpenBalloonOnClick: true,
+            clusterBalloonContentLayout: 'cluster#balloonCarousel',
+            clusterBalloonPanelMaxMapArea: 0,
+            clusterBalloonContentLayoutWidth: 200,
+            clusterBalloonContentLayoutHeight: 130,
+            clusterBalloonPagerSize: 5
+        });
+        map.geoObjects.add(cluster);
+        return cluster;
     },
     showForm(data){
         const form = document.querySelector('[data-window="form-container"]');
