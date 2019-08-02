@@ -2,11 +2,11 @@ mixin main-form()
     form.main-form.main-form--entry(action="/")
         img.close-btn(src="assets/images/checkmark.svg", alt="close", data-close="close-form")
         legend.main-form__title 
-            |Добавить новое место на карту: 
+            |Адрес на карте: 
             span(data-role="addressLine") 
         .main-form__input-group.main-form__label
-            label(for="place-name") Название места или адрес
-            input.main-form__input(type="text", placeholder="Введите название места", id="place-name")
+            label(for="place-name") Название места
+            input.main-form__input(type="text", placeholder="Введите точный адрес места", id="place-name")
         .main-form__input-group
             .main-form__sub-title Выбирите тип места
             
