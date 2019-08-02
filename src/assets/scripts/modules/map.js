@@ -1,4 +1,5 @@
 import view from './view';
+import model from './model';
 
 // Дождёмся загрузки API и готовности DOM.
 ymaps.ready(init);
@@ -16,8 +17,13 @@ function init () {
     }, {
         searchControlProvider: 'yandex#search'
     });
+    let coordsArray = model.getAllCoords();
+    for (const coords of coordsArray) {
+        view.createPlacemark(map, coords, 'text');
+    }
     map.events.add('click', (e)=>{
         coords = e.get('coords');
+        console.log(coords);
         ymaps.geocode(coords)
             .then(function (res) {
                 var firstGeoObject = res.geoObjects.get(0);
