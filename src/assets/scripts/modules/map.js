@@ -33,13 +33,12 @@ function init () {
                 view.showForm(addressText);
                 view.initHideForm();
             });
-        const sendBtn = document.querySelector('[data-role="send-data"]');
-        sendBtn.addEventListener('click', (e)=>{
-            e.preventDefault();
-            placemark = view.createPlacemark(map, coords, addressText);
-            cluster.add(placemark);
-            placemark = 0;
-            view.hideForm();
-        });
+    });
+    const sendBtn = document.querySelector('[data-role="send-data"]');
+    sendBtn.addEventListener('click', (e)=>{
+        e.preventDefault();
+        placemark = view.createPlacemark(map, coords, addressText);
+        cluster.add(placemark);
+        view.hideForm();
     });
 }

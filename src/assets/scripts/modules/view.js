@@ -7,7 +7,6 @@ const view = {
             iconColor: '#3caa3c'
         });
         map.geoObjects.add(placemark);
-        console.log(placemark);
         return placemark;
     },
     createCluster(map){
