@@ -24,14 +24,12 @@ function init () {
                 addressText = firstGeoObject.getAddressLine();
                 view.showForm(addressText);
                 view.initHideForm();
-                console.log(coords);
             });
         const sendBtn = document.querySelector('[data-role="send-data"]');
         sendBtn.addEventListener('click', (e)=>{
             e.preventDefault();
             view.createPlacemark(map, coords, addressText);
             view.hideForm();
-            console.log(coords);
         });
     });
 }
