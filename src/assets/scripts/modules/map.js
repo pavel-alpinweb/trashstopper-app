@@ -21,7 +21,7 @@ function init () {
     let cluster = view.createCluster(map);
     let coordsArray = model.getAllCoords();
     for (const coords of coordsArray) {
-        placemark = view.createPlacemark(map, coords, 'text');
+        placemark = view.createPlacemark(map, coords.coords, coords.placeName);
         cluster.add(placemark);
     }
     map.events.add('click', (e)=>{
