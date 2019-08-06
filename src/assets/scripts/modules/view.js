@@ -15,8 +15,8 @@ const view = {
             clusterOpenBalloonOnClick: true,
             clusterBalloonContentLayout: 'cluster#balloonCarousel',
             clusterBalloonPanelMaxMapArea: 0,
-            clusterBalloonContentLayoutWidth: 200,
-            clusterBalloonContentLayoutHeight: 130,
+            clusterBalloonContentLayoutWidth: 600,
+            clusterBalloonContentLayoutHeight: 70,
             clusterBalloonPagerSize: 5
         });
         map.geoObjects.add(cluster);
