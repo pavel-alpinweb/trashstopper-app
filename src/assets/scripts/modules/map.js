@@ -29,7 +29,7 @@ function init () {
         ymaps.geocode(coords)
             .then(function (res) {
                 let firstGeoObject = res.geoObjects.get(0);
-                let placeData = model.placeData;
+                let placeData = {...model.placeData};
                 addressText = firstGeoObject.getAddressLine();
                 placeData.mapAddress = addressText;
                 view.showForm(placeData);
