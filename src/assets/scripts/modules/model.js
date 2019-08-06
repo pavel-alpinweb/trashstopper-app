@@ -28,7 +28,12 @@ const model = {
     placeData: {
         mapAddress: "",
         placeName: "",
-        placeType: "trashPlace"
+        placeType: "trashPlace",
+        imageArray: {
+            trash: ["assets/content/trash1.jpg","assets/content/trash2.jpg","assets/content/trash3.jpg","assets/content/trash4.jpg"],
+            clean: ["assets/content/clean1.jpg","assets/content/clean2.jpg","assets/content/clean3.jpg","assets/content/clean4.jpg"],
+            boxes: ["assets/content/box1.jpg","assets/content/box2.jpg"]
+        }
     },
     getAllCoords(){
         return this.placeMarksArray;
