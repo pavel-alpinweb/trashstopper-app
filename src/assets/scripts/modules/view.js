@@ -1,7 +1,7 @@
 const view = {
     createPlacemark(map, coords, textAddress){
         let placemark = new ymaps.Placemark(coords, {
-            balloonContent: `<button>${textAddress}</button>`
+            balloonContent: `<button class="main-btn" data-role="getPlaceData">${textAddress}</button>`
         }, {
             preset: 'islands#circleIcon',
             iconColor: '#3caa3c'
@@ -25,7 +25,20 @@ const view = {
     showForm(data){
         const form = document.querySelector('[data-window="form-container"]');
         const addressEl = document.querySelector('[data-role="addressLine"]');
-        addressEl.innerText = data;
+        const inputEl = document.querySelector('[data-role="place-name"]');
+        const radioElTrash = document.querySelector('[data-place="trash-place"]');
+        const radioElClean = document.querySelector('[data-place="clean-place"]');
+        const radioElBox = document.querySelector('[data-place="trashBox-place"]');
+        
+        addressEl.innerText = data.mapAddress;
+        inputEl.value = data.placeName;
+        if(data.placeType == "trashBox"){
+            radioElBox.click();
+        } else if(data.placeType == "cleanPlace"){
+            radioElClean.click();
+        } else if(data.placeType == "trashPlace"){
+            radioElTrash.click();
+        }
         form.classList.remove("hide");
     },
     hideForm(){

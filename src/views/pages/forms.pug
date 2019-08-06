@@ -6,17 +6,17 @@ mixin main-form()
             span(data-role="addressLine") 
         .main-form__input-group.main-form__label
             label(for="place-name") Название места
-            input.main-form__input(type="text", placeholder="Введите точный адрес места", id="place-name")
+            input.main-form__input(type="text", placeholder="Введите точный адрес места", id="place-name", data-role="place-name")
         .main-form__input-group
             .main-form__sub-title Выбирите тип места
             
             input.radio-btn(type="radio", value="trash-place", name="place-type", data-place="trash-place", id="trash-place", checked) 
             label.main-form__label.main-form__label--radio-btn(for="trash-place") Место свалки
 
-            input.radio-btn(type="radio", value="clean-place", name="place-type", data-place="clean-place" id="clean-place") 
+            input.radio-btn(type="radio", value="clean-place", name="place-type", data-place="clean-place", id="clean-place") 
             label.main-form__label.main-form__label--radio-btn(for="clean-place") Очищенное место
 
-            input.radio-btn(type="radio", value="trash-box", name="place-type", data-place="trash-box" id="trash-box") 
+            input.radio-btn(type="radio", value="trash-box", name="place-type", data-place="trashBox-place", id="trash-box") 
             label.main-form__label.main-form__label--radio-btn(for="trash-box") Мусорные контейнеры 
             .main-form__place-menu.main-form__place-menu--place-for-cleaning
                .main-form__gallery-item

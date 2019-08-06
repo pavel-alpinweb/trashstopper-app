@@ -8,8 +8,16 @@ const model = {
         [42.82446575443727, 74.34649132080077],
         [42.911844386420285, 74.38116691894528]
     ],
+    placeData: {
+        mapAddress: "",
+        placeName: "",
+        placeType: "trashPlace"
+    },
     getAllCoords(){
         return this.placeMarksArray;
+    },
+    getPlaceData(){
+        return this.placeData;
     }
 };
 

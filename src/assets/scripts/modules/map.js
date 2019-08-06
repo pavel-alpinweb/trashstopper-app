@@ -28,9 +28,11 @@ function init () {
         coords = e.get('coords');
         ymaps.geocode(coords)
             .then(function (res) {
-                var firstGeoObject = res.geoObjects.get(0);
+                let firstGeoObject = res.geoObjects.get(0);
+                let placeData = model.placeData;
                 addressText = firstGeoObject.getAddressLine();
-                view.showForm(addressText);
+                placeData.mapAddress = addressText;
+                view.showForm(placeData);
                 view.initHideForm();
             });
     });
@@ -40,5 +42,12 @@ function init () {
         placemark = view.createPlacemark(map, coords, addressText);
         cluster.add(placemark);
         view.hideForm();
+    });
+    document.body.addEventListener('click',(e)=>{
+        if(e.target.dataset.role == "getPlaceData"){
+            let placeData = model.getPlaceData();
+            view.showForm(placeData);
+            view.initHideForm();
+        }
     });
 }
