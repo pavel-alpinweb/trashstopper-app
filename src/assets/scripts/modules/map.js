@@ -24,6 +24,7 @@ function init () {
         placemark = view.createPlacemark(map, coords.coords, coords.placeName);
         cluster.add(placemark);
     }
+    view.initSlidePhoto();
     map.events.add('click', (e)=>{
         coords = e.get('coords');
         ymaps.geocode(coords)
@@ -35,7 +36,6 @@ function init () {
                 view.showForm(placeData);
                 view.initHideForm();
                 view.initShowGallery();
-                view.initSlidePhoto();
             });
     });
     const sendBtn = document.querySelector('[data-role="send-data"]');
@@ -51,7 +51,6 @@ function init () {
             view.showForm(placeData);
             view.initHideForm();
             view.initShowGallery();
-            view.initSlidePhoto();
         }
     });
 }
