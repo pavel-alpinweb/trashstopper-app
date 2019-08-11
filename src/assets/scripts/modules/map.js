@@ -24,7 +24,6 @@ function init () {
         placemark = view.createPlacemark(map, coords.coords, coords.placeName);
         cluster.add(placemark);
     }
-    view.initSlidePhoto();
     map.events.add('click', (e)=>{
         coords = e.get('coords');
         ymaps.geocode(coords)
@@ -53,4 +52,5 @@ function init () {
             view.initShowGallery();
         }
     });
+    view.initSlidePhoto();
 }
