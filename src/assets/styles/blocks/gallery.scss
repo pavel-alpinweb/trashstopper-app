@@ -8,4 +8,30 @@
 .gallery__slide{
     width: 100%;
     height:auto;
+    user-select: none; 
+}
+
+.gallery__control-left, .gallery__control-right{
+    width: 30px;
+    height: 30px;
+    fill:white;
+    transition:all 0.3s;
+    cursor: pointer;
+    &:hover{
+        fill:$accentColor;
+    }
+}
+
+.gallery__control{
+    position: absolute;
+    top:50%;
+    margin-top: -15px;
+}
+
+.gallery__control--prev{
+    left: 15px;
+}
+
+.gallery__control--next{
+    right: 15px;
 }

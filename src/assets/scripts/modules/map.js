@@ -35,6 +35,7 @@ function init () {
                 view.showForm(placeData);
                 view.initHideForm();
                 view.initShowGallery();
+                view.initSlidePhoto();
             });
     });
     const sendBtn = document.querySelector('[data-role="send-data"]');
@@ -50,6 +51,7 @@ function init () {
             view.showForm(placeData);
             view.initHideForm();
             view.initShowGallery();
+            view.initSlidePhoto();
         }
     });
 }

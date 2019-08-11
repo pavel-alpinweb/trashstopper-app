@@ -1,6 +1,12 @@
+include ./mixins
+
 mixin gallery()
     .gallery
         img.close-btn(src="assets/images/checkmark.svg", alt="close", data-close="close-gallery")
         .gallery__slider
+            .gallery__prev.gallery__control.gallery__control--prev(data-control="prev-slide") 
+                +icon('left', 'gallery__control-left')
+            .gallery__next.gallery__control.gallery__control--next(data-control="next-slide")
+                +icon('right', 'gallery__control-right')
             .gallery__item
-                img.gallery__slide(src="assets/content/trash1.jpg", alt="картинка", data-slide)
+                img.gallery__slide(src="assets/content/trash1.jpg", alt="картинка", data-slide="0")

@@ -16,6 +16,8 @@ const closeBtns = document.querySelectorAll('[data-close="close-form"]');
 const closeGalleryBtns = document.querySelectorAll('[data-close="close-gallery"]');
 
 const gallerySlide = document.querySelector('[data-slide]');
+const nextSlideBtn = document.querySelector('[data-control="next-slide"]');
+const prevSlideBtn = document.querySelector('[data-control="prev-slide"]');
 
 let galleryArray = [];
 
@@ -125,6 +127,7 @@ const view = {
                 this.hideForm();
                 const src = galleryArray[e.target.dataset.photo];
                 gallerySlide.src = src;
+                gallerySlide.setAttribute('data-slide', e.target.dataset.photo);
                 gallery.classList.remove("hide");
                 this.initHideGallery();
             }
@@ -137,6 +140,28 @@ const view = {
                 form.classList.remove("hide");
             });
         }
+    },
+    initSlidePhoto(){
+        nextSlideBtn.addEventListener('click', ()=>{
+            let index = gallerySlide.getAttribute('data-slide');
+            index++;
+            if(index == galleryArray.length){
+                index = 0;
+            }
+            gallerySlide.setAttribute('data-slide', index);
+            const src = galleryArray[index];
+            gallerySlide.src = src;
+        });
+        prevSlideBtn.addEventListener('click', ()=>{
+            let index = gallerySlide.getAttribute('data-slide');
+            index--;
+            if(index == -1){
+                index = galleryArray.length-1;
+            }
+            gallerySlide.setAttribute('data-slide', index);
+            const src = galleryArray[index];
+            gallerySlide.src = src;
+        });
     }
 };
 
