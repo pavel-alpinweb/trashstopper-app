@@ -34,6 +34,7 @@ function init () {
                 placeData.mapAddress = addressText;
                 view.showForm(placeData);
                 view.initHideForm();
+                view.initShowGallery();
             });
     });
     const sendBtn = document.querySelector('[data-role="send-data"]');
@@ -48,6 +49,7 @@ function init () {
             let placeData = model.getPlaceData();
             view.showForm(placeData);
             view.initHideForm();
+            view.initShowGallery();
         }
     });
 }

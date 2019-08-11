@@ -1,4 +1,5 @@
 const form = document.querySelector('[data-window="form-container"]');
+const gallery = document.querySelector('[data-window="gallery-container"]');
 
 const addressEl = document.querySelector('[data-role="addressLine"]');
 const inputEl = document.querySelector('[data-role="place-name"]');
@@ -10,6 +11,11 @@ const radioElBox = document.querySelector('[data-place="trashBox-place"]');
 const trashGallery = document.querySelector('[data-gallery="trashGallery"]');
 const cleanGallery = document.querySelector('[data-gallery="cleanGallery"]');
 const boxesGallery = document.querySelector('[data-gallery="boxesGallery"]');
+
+const closeBtns = document.querySelectorAll('[data-close="close-form"]');
+const closeGalleryBtns = document.querySelectorAll('[data-close="close-gallery"]');
+
+const gallerySlide = document.querySelector('[data-slide]');
 
 const view = {
     createPlacemark(map, coords, textAddress){
@@ -54,6 +60,7 @@ const view = {
                 const image = document.createElement('img');
                 image.className='photo-preview';
                 image.src = src;
+                image.setAttribute('data-photo', 0);
                 trashGallery.append(image);
             }  
         }
@@ -62,6 +69,7 @@ const view = {
                 const image = document.createElement('img');
                 image.className='photo-preview';
                 image.src = src;
+                image.setAttribute('data-photo', 0);
                 cleanGallery.append(image);
             }  
         }
@@ -70,6 +78,7 @@ const view = {
                 const image = document.createElement('img');
                 image.className='photo-preview';
                 image.src = src;
+                image.setAttribute('data-photo', 0);
                 boxesGallery.append(image);
             }  
         }
@@ -81,9 +90,27 @@ const view = {
         form.classList.add("hide");
     },
     initHideForm(){
-        const closeBtns = document.querySelectorAll('[data-close="close-form"]');
         for (const btn of closeBtns) {
             btn.addEventListener('click', this.hideForm);
+        }
+    },
+    initShowGallery(){
+        document.body.addEventListener('click',(e)=>{
+            if(e.target.dataset.photo){
+                this.hideForm();
+                const src = e.target.src;
+                gallerySlide.src = src;
+                gallery.classList.remove("hide");
+                this.initHideGallery();
+            }
+        });
+    },
+    initHideGallery(){
+        for (const btn of closeGalleryBtns) {
+            btn.addEventListener('click', ()=>{
+                gallery.classList.add("hide");
+                form.classList.remove("hide");
+            });
         }
     }
 };

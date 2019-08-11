@@ -1,5 +1,6 @@
 extends ../main.layout.pug
 include ./forms
+include ../common/gallery
 
 block content
   .app-conatiner
@@ -7,4 +8,7 @@ block content
   .app-conatiner__form-wrapper.hide(data-window="form-container")
     .app-conatiner__hideCover(data-close="close-form")
     +main-form()
+  .app-conatiner__form-wrapper.hide(data-window="gallery-container")
+    .app-conatiner__hideCover(data-close="close-gallery")
+    +gallery()
     
