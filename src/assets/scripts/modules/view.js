@@ -17,6 +17,12 @@ const closeGalleryBtns = document.querySelectorAll('[data-close="close-gallery"]
 
 const gallerySlide = document.querySelector('[data-slide]');
 
+let galleryArray = [];
+
+let trashGalleryArray = [];
+let cleanGalleryArray = [];
+let boxesGalleryArray = [];
+
 const view = {
     createPlacemark(map, coords, textAddress){
         let placemark = new ymaps.Placemark(coords, {
@@ -56,29 +62,41 @@ const view = {
         }
 
         if(data.imageArray.trash.length != 0){
+            let index = 0;
+            trashGalleryArray = data.imageArray.trash;
             for (const src of data.imageArray.trash) {
                 const image = document.createElement('img');
                 image.className='photo-preview';
                 image.src = src;
-                image.setAttribute('data-photo', 0);
+                image.setAttribute('data-photo', index);
+                image.setAttribute('data-type-photo', 'trash');
+                index++;
                 trashGallery.append(image);
             }  
         }
         if(data.imageArray.clean.length != 0){
+            let index = 0;
+            cleanGalleryArray = data.imageArray.clean;
             for (const src of data.imageArray.clean) {
                 const image = document.createElement('img');
                 image.className='photo-preview';
                 image.src = src;
-                image.setAttribute('data-photo', 0);
+                image.setAttribute('data-photo', index);
+                image.setAttribute('data-type-photo', 'clean');
+                index++;
                 cleanGallery.append(image);
             }  
         }
         if(data.imageArray.boxes.length != 0){
+            let index = 0;
+            boxesGalleryArray = data.imageArray.boxes;
             for (const src of data.imageArray.boxes) {
                 const image = document.createElement('img');
                 image.className='photo-preview';
                 image.src = src;
-                image.setAttribute('data-photo', 0);
+                image.setAttribute('data-photo', index);
+                image.setAttribute('data-type-photo', 'boxes');
+                index++;
                 boxesGallery.append(image);
             }  
         }
@@ -96,9 +114,16 @@ const view = {
     },
     initShowGallery(){
         document.body.addEventListener('click',(e)=>{
-            if(e.target.dataset.photo){
+            if(e.target.dataset.typePhoto){
+                if(e.target.dataset.typePhoto == 'trash'){
+                    galleryArray = trashGalleryArray;
+                } else if(e.target.dataset.typePhoto == 'clean'){
+                    galleryArray = cleanGalleryArray;
+                } else if(e.target.dataset.typePhoto == 'boxes'){
+                    galleryArray = boxesGalleryArray;
+                }
                 this.hideForm();
-                const src = e.target.src;
+                const src = galleryArray[e.target.dataset.photo];
                 gallerySlide.src = src;
                 gallery.classList.remove("hide");
                 this.initHideGallery();
