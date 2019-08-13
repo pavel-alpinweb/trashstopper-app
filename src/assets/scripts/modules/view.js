@@ -26,9 +26,9 @@ let cleanGalleryArray = [];
 let boxesGalleryArray = [];
 
 const view = {
-    createPlacemark(map, coords, textAddress){
+    createPlacemark(map, coords, textAddress, id){
         let placemark = new ymaps.Placemark(coords, {
-            balloonContent: `<button class="main-btn" data-role="getPlaceData">${textAddress}</button>`
+            balloonContent: `<button class="main-btn" data-role="getPlaceData", id="${id}">${textAddress}</button>`
         }, {
             preset: 'islands#circleIcon',
             iconColor: '#3caa3c'

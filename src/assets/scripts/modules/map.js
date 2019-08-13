@@ -3,10 +3,11 @@ import model from './model';
 
 // Дождёмся загрузки API и готовности DOM.
 ymaps.ready(init);
-function init () {
+async function init () {
     let coords;
     let addressText;
     let placemark;
+    const nameInput = document.querySelector('[data-role="place-name"]');
 
     // Создание экземпляра карты и его привязка к контейнеру с
     // заданным id ("map").
@@ -19,10 +20,10 @@ function init () {
         searchControlProvider: 'yandex#search'
     });
     let cluster = view.createCluster(map);
-    let coordsArray = model.getAllCoords();
+    let coordsArray = await model.getAllCoords();
     if(coordsArray.length > 0){
         for (const coords of coordsArray) {
-            placemark = view.createPlacemark(map, coords.coords, coords.placeName);
+            placemark = view.createPlacemark(map, coords.coords, coords.placeName, coords.id);
             cluster.add(placemark);
         }
     }
@@ -42,16 +43,26 @@ function init () {
     const sendBtn = document.querySelector('[data-role="send-data"]');
     sendBtn.addEventListener('click', (e)=>{
         e.preventDefault();
-        placemark = view.createPlacemark(map, coords, addressText);
-        cluster.add(placemark);
+        let placeData = {...model.placeData};
+        placeData.id = Date.now();
+        placeData.mapAddress = addressText;
+        placeData.coords = coords;
+        placeData.placeName = nameInput.value;
+        placeData.placeType = document.querySelector('input[name="place-type"]:checked').value;
+        model.postPlaceData(placeData, ()=>{
+            placemark = view.createPlacemark(map, coords, addressText, placeData.id);
+            cluster.add(placemark);
+        });
         view.hideForm();
     });
     document.body.addEventListener('click',(e)=>{
         if(e.target.dataset.role == "getPlaceData"){
-            let placeData = model.getPlaceData();
-            view.showForm(placeData);
-            view.initHideForm();
-            view.initShowGallery();
+            let id = e.target.id;
+            model.getPlaceData(id,(placeData)=>{
+                view.showForm(placeData);
+                view.initHideForm();
+                view.initShowGallery();
+            });
         }
     });
     view.initSlidePhoto();
