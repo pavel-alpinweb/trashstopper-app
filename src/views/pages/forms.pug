@@ -22,18 +22,18 @@ mixin main-form()
                .main-form__gallery-item
                     .main-form__sub-title До уборки
                     input.hide(type="file", multiple, placeholder="Добавте фото")
-                    button.main-btn Добавте фото
+                    button.main-btn(data-file-btn="trash") Добавте фото
                     .main-form__gallery(data-gallery="trashGallery")
                .main-form__gallery-item
                     .main-form__sub-title После уборки
                     input.hide(type="file", multiple, placeholder="Добавте фото")
-                    button.main-btn Добавте фото
+                    button.main-btn(data-file-btn="clean") Добавте фото
                     .main-form__gallery(data-gallery="cleanGallery")
             .main-form__place-menu.main-form__place-menu--trash-box
                 .main-form__gallery-item
                     .main-form__sub-title Мусорные контейнеры
-                    input.hide(type="file", placeholder="Добавте фото") 
-                    button.main-btn Добавте фото
+                    input.hide(type="file", multiple, placeholder="Добавте фото") 
+                    button.main-btn(data-file-btn="boxes") Добавте фото
                     .main-form__gallery(data-gallery="boxesGallery")
         .main-form__input-group
             button.main-btn(data-role="send-data") Сохранить

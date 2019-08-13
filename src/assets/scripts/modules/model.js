@@ -1,30 +1,11 @@
+const fileBtnArray = document.querySelectorAll('[data-file-btn]');
+
 const model = {
-    placeMarksArray: [
-        {
-            coords: [42.947290603654984, 74.59746025390625],
-            placeName: "Пользовательское название места"
-        },
-        {
-            coords: [42.831162453900845, 74.40897606201173],
-            placeName: "Пользовательское название места"
-        },
-        {
-            coords: [42.79577539713646, 74.481073840332],
-            placeName: "Пользовательское название места"
-        },
-        {
-            coords: [42.825476623823434, 74.77770469970703],
-            placeName: "Пользовательское название места"
-        },
-        {
-            coords: [42.82446575443727, 74.34649132080077],
-            placeName: "Пользовательское название места"
-        },
-        {
-            coords: [42.911844386420285, 74.38116691894528],
-            placeName: "Пользовательское название места"
-        }       
-    ],
+    placeMarksArray: [],
+    // {
+    //     coords: [42.947290603654984, 74.59746025390625],
+    //     placeName: "Пользовательское название места"
+    // }
     placeData: {
         mapAddress: "",
         placeName: "",
@@ -35,11 +16,26 @@ const model = {
             boxes: ["assets/content/box1.jpg","assets/content/box2.jpg"]
         }
     },
-    getAllCoords(){
+    async getAllCoords(){
+        let response = await fetch('/allCoords');
+        if (response.ok) { // если HTTP-статус в диапазоне 200-299
+            // получаем тело ответа (см. про этот метод ниже)
+            let json = await response.json();
+            this.placeMarksArray = json;
+        } else {
+            alert("Ошибка HTTP: " + response.status);
+        }
         return this.placeMarksArray;
     },
     getPlaceData(){
         return this.placeData;
+    },
+    addPhoto(){
+        for (const element of fileBtnArray) {
+            element.addEventListener('click', (e)=>{
+                e.preventDefault();
+            });
+        }
     }
 };
 
