@@ -3,6 +3,7 @@ const gallery = document.querySelector('[data-window="gallery-container"]');
 
 const addressEl = document.querySelector('[data-role="addressLine"]');
 const inputEl = document.querySelector('[data-role="place-name"]');
+const idElem = document.querySelector('[data-id]');
 
 const radioElTrash = document.querySelector('[data-place="trash-place"]');
 const radioElClean = document.querySelector('[data-place="clean-place"]');
@@ -18,6 +19,9 @@ const closeGalleryBtns = document.querySelectorAll('[data-close="close-gallery"]
 const gallerySlide = document.querySelector('[data-slide]');
 const nextSlideBtn = document.querySelector('[data-control="next-slide"]');
 const prevSlideBtn = document.querySelector('[data-control="prev-slide"]');
+
+const sendBtn = document.querySelector('[data-role="send-data"]');
+const updateBtn = document.querySelector('[data-role="update-data"]');
 
 let galleryArray = [];
 
@@ -55,6 +59,7 @@ const view = {
         trashGallery.innerHTML = "";
         cleanGallery.innerHTML = "";
         boxesGallery.innerHTML = "";
+        idElem.setAttribute('data-id', data.id);
         if(data.placeType == "trashBox"){
             radioElBox.click();
         } else if(data.placeType == "cleanPlace"){
@@ -62,7 +67,13 @@ const view = {
         } else if(data.placeType == "trashPlace"){
             radioElTrash.click();
         }
-
+        if(data.isNew){
+            updateBtn.classList.add("hide");
+            sendBtn.classList.remove("hide");
+        } else {
+            updateBtn.classList.remove("hide");
+            sendBtn.classList.add("hide");
+        }
         if(data.imageArray.trash.length != 0){
             let index = 0;
             trashGalleryArray = data.imageArray.trash;

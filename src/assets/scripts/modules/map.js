@@ -1,5 +1,6 @@
 import view from './view';
 import model from './model';
+import PlaceData from './placeData';
 
 // Дождёмся загрузки API и готовности DOM.
 ymaps.ready(init);
@@ -8,7 +9,7 @@ async function init () {
     let addressText;
     let placemark;
     const nameInput = document.querySelector('[data-role="place-name"]');
-
+    const idElem = document.querySelector('[data-id]');
     // Создание экземпляра карты и его привязка к контейнеру с
     // заданным id ("map").
     const map = new ymaps.Map('map', {
@@ -32,7 +33,7 @@ async function init () {
         ymaps.geocode(coords)
             .then(function (res) {
                 let firstGeoObject = res.geoObjects.get(0);
-                let placeData = {...model.placeData};
+                let placeData = new PlaceData;
                 addressText = firstGeoObject.getAddressLine();
                 placeData.mapAddress = addressText;
                 view.showForm(placeData);
@@ -43,23 +44,37 @@ async function init () {
     const sendBtn = document.querySelector('[data-role="send-data"]');
     sendBtn.addEventListener('click', (e)=>{
         e.preventDefault();
-        let placeData = {...model.placeData};
+        let placeData = new PlaceData;
         placeData.id = Date.now();
         placeData.mapAddress = addressText;
         placeData.coords = coords;
         placeData.placeName = nameInput.value;
         placeData.placeType = document.querySelector('input[name="place-type"]:checked').value;
+        placeData.isNew = false;
         model.postPlaceData(placeData, ()=>{
             placemark = view.createPlacemark(map, coords, addressText, placeData.id);
             cluster.add(placemark);
         });
         view.hideForm();
     });
+    const updateBtn = document.querySelector('[data-role="update-data"]');
+    updateBtn.addEventListener('click', (e)=>{
+        e.preventDefault();
+        let placeData = model.placeData;
+        placeData.id = idElem.dataset.id;
+        placeData.mapAddress = addressText;
+        placeData.coords = coords;
+        placeData.placeName = nameInput.value;
+        placeData.placeType = document.querySelector('input[name="place-type"]:checked').value;
+        model.postPlaceData(placeData);
+        view.hideForm();
+    });
     document.body.addEventListener('click',(e)=>{
         if(e.target.dataset.role == "getPlaceData"){
             let id = e.target.id;
-            model.getPlaceData(id,(placeData)=>{
-                view.showForm(placeData);
+            model.getPlaceData(id,(data)=>{
+                model.placeData = data;
+                view.showForm(data);
                 view.initHideForm();
                 view.initShowGallery();
             });

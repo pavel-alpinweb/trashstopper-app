@@ -8,15 +8,13 @@ const model = {
             placeName: "Пользовательское название места"
         }
     ],
-    // {
-    //     coords: [42.947290603654984, 74.59746025390625],
-    //     placeName: "Пользовательское название места"
-    // }
     placeData: {
         coords: [],
         mapAddress: "",
         placeName: "",
+        id:1,
         placeType: "trashPlace",
+        isNew: false,
         imageArray: {
             trash: [],
             clean: [],
@@ -34,12 +32,13 @@ const model = {
         return this.placeMarksArray;
     },
     async getPlaceData(id, callback){
-        let response = await fetch('/placemark' + id);
+        let response = await fetch('/placemark/' + id);
         if (response.ok) { 
             let json = await response.json();
             callback(json);
         } else {
             alert("Ошибка HTTP: " + response.status);
+            callback(this.placeData);
         }
     },
     async postPlaceData(data, callback){
@@ -52,6 +51,20 @@ const model = {
         });
         if (response.ok) {
             callback();
+        } else {
+            alert("Ошибка HTTP: " + response.status);
+        }
+    },
+    async updatePlaceData(data){
+        let response = await fetch('/placemark/' + data.id, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+          },
+          body: JSON.stringify(data)
+        });
+        if (response.ok) {
+            alert("Данные о месте обновленны");
         } else {
             alert("Ошибка HTTP: " + response.status);
         }

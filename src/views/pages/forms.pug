@@ -4,6 +4,7 @@ mixin main-form()
         legend.main-form__title 
             |Адрес на карте: 
             span(data-role="addressLine") 
+            span(data-id="")
         .main-form__input-group.main-form__label
             label(for="place-name") Название места
             input.main-form__input(type="text", placeholder="Введите точный адрес места", id="place-name", data-role="place-name")
@@ -36,5 +37,6 @@ mixin main-form()
                     button.main-btn(data-file-btn="boxes") Добавте фото
                     .main-form__gallery(data-gallery="boxesGallery")
         .main-form__input-group
-            button.main-btn(data-role="send-data") Сохранить
+            button.main-btn(data-role="send-data") Добавить
+            button.main-btn.hide(data-role="update-data") Обновить
         
