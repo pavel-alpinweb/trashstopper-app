@@ -77,6 +77,9 @@
     cursor: pointer;
     border: 2px solid $accentColor;
     margin-bottom: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .radio-btn:checked + .main-form__label--radio-btn{
@@ -88,12 +91,16 @@
     display: none;
     width:100%;
     justify-content: space-between;
+    flex-wrap:wrap;
 }
 
 .main-form__gallery-item{
     width:48%;
     margin-left: -4px;
     text-align: center;
+    @media screen and (max-width:480px){
+        width: 100%;
+    }
 }
 
 .main-form__place-menu--trash-box{
