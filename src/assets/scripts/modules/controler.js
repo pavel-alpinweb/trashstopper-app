@@ -5,9 +5,11 @@ import PlaceData from './placeData';
 // Дождёмся загрузки API и готовности DOM.
 ymaps.ready(init);
 async function init () {
+    
     let coords;
     let addressText;
     let placemark;
+    
     const nameInput = document.querySelector('[data-role="place-name"]');
     const idElem = document.querySelector('[data-id]');
     // Создание экземпляра карты и его привязка к контейнеру с
@@ -42,7 +44,7 @@ async function init () {
             });
     });
     const sendBtn = document.querySelector('[data-role="send-data"]');
-    sendBtn.addEventListener('click', (e)=>{
+    sendBtn.addEventListener('click', async (e)=>{
         e.preventDefault();
         let placeData = new PlaceData;
         placeData.id = Date.now();
@@ -51,10 +53,11 @@ async function init () {
         placeData.placeName = nameInput.value;
         placeData.placeType = document.querySelector('input[name="place-type"]:checked').value;
         placeData.isNew = false;
-        model.postPlaceData(placeData, ()=>{
+        let isSuccess = await model.postPlaceData(placeData);
+        if(isSuccess){
             placemark = view.createPlacemark(map, coords, addressText, placeData.id);
             cluster.add(placemark);
-        });
+        } 
         view.hideForm();
     });
     const updateBtn = document.querySelector('[data-role="update-data"]');
@@ -69,15 +72,15 @@ async function init () {
         model.postPlaceData(placeData);
         view.hideForm();
     });
-    document.body.addEventListener('click',(e)=>{
+    document.body.addEventListener('click',async (e)=>{
         if(e.target.dataset.role == "getPlaceData"){
             let id = e.target.id;
-            model.getPlaceData(id,(data)=>{
-                model.placeData = data;
-                view.showForm(data);
+            model.placeData = await model.getPlaceData(id);
+            if(model.placeData){
+                view.showForm(model.placeData);
                 view.initHideForm();
                 view.initShowGallery();
-            });
+            }
         }
     });
     view.initSlidePhoto();

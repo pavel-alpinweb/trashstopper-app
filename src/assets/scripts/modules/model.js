@@ -2,11 +2,11 @@ const fileBtnArray = document.querySelectorAll('[data-file-btn]');
 
 const model = {
     placeMarksArray: [
-        // {
-        //     coords: [42.947290603654984, 74.59746025390625],
-        //     id:1,
-        //     placeName: "Пользовательское название места"
-        // }
+        {
+            coords: [42.947290603654984, 74.59746025390625],
+            id:1,
+            placeName: "Пользовательское название места"
+        }
     ],
     placeData: {
         coords: [],
@@ -31,17 +31,17 @@ const model = {
         }
         return this.placeMarksArray;
     },
-    async getPlaceData(id, callback){
+    async getPlaceData(id){
         let response = await fetch('/placemark/' + id);
         if (response.ok) { 
             let json = await response.json();
-            callback(json);
+            return json;
         } else {
             alert("Ошибка HTTP: " + response.status);
-            callback(this.placeData);
+            return false;
         }
     },
-    async postPlaceData(data, callback){
+    async postPlaceData(data){
         let response = await fetch('/placemark', {
           method: 'POST',
           headers: {
@@ -50,9 +50,10 @@ const model = {
           body: JSON.stringify(data)
         });
         if (response.ok) {
-            callback();
+            return true;
         } else {
             alert("Ошибка HTTP: " + response.status);
+            return false;
         }
     },
     async updatePlaceData(data){
