@@ -1,5 +1,4 @@
 const gulp = require('gulp');
-const pug = require('gulp-pug');
 const sourcemaps = require('gulp-sourcemaps');
 const postcss = require('gulp-postcss');
 const rename = require('gulp-rename');
@@ -17,49 +16,33 @@ const px2rem = require('gulp-px-to-rem');
 const reload = browserSync.reload;
 
 const paths = {
-    root: 'build',
-    templates: {
-        pages: './src/views/pages/*.pug',
-        src: './src/views/**/*.pug',
-        dest: './build/'
-    },
-    styles: {
-        main: './src/assets/styles/main.scss',
-        src: './src/assets/styles/**/*.scss',
-        dest: './build/assets/styles/'
-    },
-    scripts: {
-        src: './src/assets/scripts/**/*.js',
-        dest: './build/assets/scripts/'
-    },
-    images: {
-        src: './src/assets/images/*.*',
-        dest: './build/assets/images/'
-    },
-    icons: {
-        src: './src/assets/images/icons/*.svg',
-        dest: './build/assets/images/icons/'
-    },
-    fonts: {
-        src: './src/assets/fonts/*.*',
-        dest: './build/assets/fonts/'
-    },
-    content: {
-      src: './src/assets/content/*.*',
-      dest: './build/assets/content/'
-    }
+  root: 'public/assets',
+  styles: {
+      main: './src/assets/styles/main.scss',
+      src: './src/assets/styles/**/*.scss',
+      dest: './public/assets/styles/'
+  },
+  scripts: {
+      src: './src/assets/scripts/**/*.js',
+      dest: './public/assets/scripts/'
+  },
+  images: {
+      src: './src/assets/images/*.*',
+      dest: './public/assets/images/'
+  },
+  icons: {
+      src: './src/assets/images/icons/*.svg',
+      dest: './public/assets/images/icons/'
+  },
+  fonts: {
+      src: './src/assets/fonts/*.*',
+      dest: './public/assets/fonts/'
+  }
 }
 
 //clean
 function clean() {
     return del(paths.root);   
-}
-
-//pug
-function templates() {
-    return gulp.src(paths.templates.pages)
-        .pipe(pug({ pretty: true }))
-        .pipe(gulp.dest(paths.root));
 }
 
 // postcss
@@ -84,15 +67,6 @@ function images() {
       .pipe(gulp.dest(paths.images.dest));
 }
 
-// просто переносим пользосвательские файлы
-function content() {
-    return gulp
-      .src([
-        paths.content.src
-      ])
-      .pipe(gulp.dest(paths.content.dest));
-}
-
 // просто переносим шрифты
 function fonts() {
     return gulp
@@ -110,23 +84,10 @@ function scripts() {
 // watch
 function watch() {
     gulp.watch(paths.styles.src, styles);
-    gulp.watch(paths.templates.src, templates);
     gulp.watch(paths.scripts.src, scripts);
     gulp.watch(paths.images.src, images);
-    gulp.watch(paths.content.src, content);
     gulp.watch(paths.fonts.src, fonts);
     gulp.watch(paths.icons.src, svgIcons);
-}
-
-//server
-function server() {
-    browserSync.init({
-        server: paths.root,
-        tunnel: true,
-        open: false,
-        tunnel: "test-server"
-    });
-    browserSync.watch(paths.root + '/**/*.*', browserSync.reload);
 }
 
 function svgIcons(done) {
@@ -165,21 +126,18 @@ function svgIcons(done) {
     .pipe(gulp.dest(paths.icons.dest));
 }
 
-exports.templates = templates;
 exports.styles = styles;
 exports.clean = clean;
 exports.scripts = scripts;
 exports.watch = watch;
-exports.server = server;
 exports.svgIcons = svgIcons;
 exports.images = images;
-exports.content = content;
 exports.fonts = fonts;
 
 // default
 gulp.task('default', gulp.series(
     clean,
     gulp.parallel(svgIcons),
-    gulp.parallel(images, content, fonts, styles, templates, scripts),
-    gulp.parallel(watch, server)
+    gulp.parallel(images, fonts, styles, scripts),
+    gulp.parallel(watch)
 ));
