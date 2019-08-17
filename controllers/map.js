@@ -20,3 +20,9 @@ module.exports.createPlace = function(req, res){
     db.get("placeMarks").push(placeMark).write();
     res.sendStatus(200);
 };
+
+module.exports.getPlace = function (req, res) {
+    const id = Number(req.params.id);
+    const result = db.get("places").find({ id: id }).value();
+    res.send(result);
+}
