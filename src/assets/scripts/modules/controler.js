@@ -52,7 +52,6 @@ async function init () {
         placeData.coords = coords;
         placeData.placeName = nameInput.value;
         placeData.placeType = document.querySelector('input[name="place-type"]:checked').value;
-        placeData.isNew = false;
         let isSuccess = await model.postPlaceData(placeData);
         if(isSuccess){
             placemark = view.createPlacemark(map, coords, addressText, placeData.id);
@@ -69,6 +68,7 @@ async function init () {
         placeData.coords = coords;
         placeData.placeName = nameInput.value;
         placeData.placeType = document.querySelector('input[name="place-type"]:checked').value;
+        placeData.isNew = false;
         model.postPlaceData(placeData);
         view.hideForm();
     });

@@ -5,5 +5,6 @@ const ctrlMap = require("../controllers/map");
 
 router.get("/", ctrlMap.get);
 router.get("/allPlaces", ctrlMap.getPlacaMarks);
+router.post("/placemark", ctrlMap.createPlace);
 
 module.exports = router;

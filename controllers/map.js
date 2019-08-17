@@ -8,3 +8,15 @@ module.exports.getPlacaMarks = function(req, res){
     const result = db.get("placeMarks").value();
     res.send(result);
 };
+
+module.exports.createPlace = function(req, res){
+    const place = req.body;
+    const placeMark = {
+        coords: place.coords,
+        id: place.id,
+        placeName: place.placeName
+    };
+    db.get("places").push(place).write();
+    db.get("placeMarks").push(placeMark).write();
+    res.sendStatus(200);
+};
