@@ -23,6 +23,14 @@
       ],
       "id": 1566039096501,
       "placeName": "Placename 3"
+    },
+    {
+      "coords": [
+        42.831794180280355,
+        74.63659904785158
+      ],
+      "id": 1566039202846,
+      "placeName": "БОТАНИЧЕСКИЙ САД"
     }
   ],
   "places": [
@@ -67,6 +75,22 @@
       "placeName": "Placename 3",
       "id": 1566039096501,
       "placeType": "trashBox",
+      "isNew": false,
+      "imageArray": {
+        "trash": [],
+        "clean": [],
+        "boxes": []
+      }
+    },
+    {
+      "coords": [
+        42.831794180280355,
+        74.63659904785158
+      ],
+      "mapAddress": "Киргизия, Бишкек, Ботанический сад Национальной академии наук Кыргызской Республики",
+      "placeName": "БОТАНИЧЕСКИЙ САД",
+      "id": 1566039202846,
+      "placeType": "trashPlace",
       "isNew": false,
       "imageArray": {
         "trash": [],
