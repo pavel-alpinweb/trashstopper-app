@@ -54,7 +54,7 @@ async function init () {
         placeData.placeType = document.querySelector('input[name="place-type"]:checked').value;
         let isSuccess = await model.postPlaceData(placeData);
         if(isSuccess){
-            placemark = view.createPlacemark(map, coords, addressText, placeData.id);
+            placemark = view.createPlacemark(map, coords, placeData.placeName, placeData.id);
             cluster.add(placemark);
         } 
         view.hideForm();

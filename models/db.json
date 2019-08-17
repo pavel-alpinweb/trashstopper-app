@@ -7,6 +7,14 @@
       ],
       "id": 1566033241008,
       "placeName": "Название места 1"
+    },
+    {
+      "coords": [
+        42.89240963051402,
+        74.59952019042966
+      ],
+      "id": 1566033438438,
+      "placeName": "Placedata 2"
     }
   ],
   "places": [
@@ -18,6 +26,22 @@
       "mapAddress": "Киргизия, Бишкек, улица Чуй 13, 17",
       "placeName": "Название места 1",
       "id": 1566033241008,
+      "placeType": "trashPlace",
+      "isNew": true,
+      "imageArray": {
+        "trash": [],
+        "clean": [],
+        "boxes": []
+      }
+    },
+    {
+      "coords": [
+        42.89240963051402,
+        74.59952019042966
+      ],
+      "mapAddress": "Киргизия, Бишкек, улица Серова",
+      "placeName": "Placedata 2",
+      "id": 1566033438438,
       "placeType": "trashPlace",
       "isNew": true,
       "imageArray": {
