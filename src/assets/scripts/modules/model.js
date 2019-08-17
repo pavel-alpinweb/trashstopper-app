@@ -1,13 +1,7 @@
 const fileBtnArray = document.querySelectorAll('[data-file-btn]');
 
 const model = {
-    placeMarksArray: [
-        // {
-        //     coords: [42.947290603654984, 74.59746025390625],
-        //     id:1,
-        //     placeName: "Пользовательское название места"
-        // }
-    ],
+    placeMarksArray: [],
     placeData: {
         coords: [],
         mapAddress: "",
