@@ -9,9 +9,13 @@ async function init () {
     let coords;
     let addressText;
     let placemark;
+    let filesArray = [];
     
     const nameInput = document.querySelector('[data-role="place-name"]');
     const idElem = document.querySelector('[data-id]');
+    const fileBtnArray = document.querySelectorAll('[data-role="file-btn"]');
+
+    const fileInputsArray = document.querySelectorAll('[data-input-file]');
     // Создание экземпляра карты и его привязка к контейнеру с
     // заданным id ("map").
     const map = new ymaps.Map('map', {
@@ -83,6 +87,44 @@ async function init () {
             }
         }
     });
+    function addPhoto(){
+        for (const element of fileBtnArray) {
+            element.addEventListener('click', (e)=>{
+                e.preventDefault();
+                const fileEl = e.target.dataset.fileBtn;
+                const fileInput = document.querySelector(`[data-file="${fileEl}"]`);
+                fileInput.click();
+            });
+        }
+        for (const input of fileInputsArray) {
+            input.addEventListener('change', (e)=>{
+                const loadingFilesArray = e.target.files;
+                const reader = new FileReader();
+                let validFiles = [];
+                reader.onload = function () {
+                    for (const file of loadingFilesArray) {
+                        let isValidType = (file.type == 'image/png'
+                            || file.type == 'image/jpeg'
+                            || file.type == 'image/jpg');
+                        let isValidSize = file.size / 1024 / 1024 < 2;
+                        if (!isValidType) {
+                            alert(`Можно загружать только изображения форматов: png, jpeg, jpg. 
+                            Файл: ${file.name} имеет не верный формат.`);
+                        } else if(!isValidSize) {
+                            alert(`Файл не должен привышать размер 2mb. 
+                            Файл: ${file.name} имеет слишком большой размер.`);
+                        } else {
+                            validFiles.push(file);
+                        }
+                    }
+                    filesArray = validFiles;
+                }
+                for (const file of loadingFilesArray) {
+                    reader.readAsDataURL(file);
+                }
+            }); 
+        }
+    }
+    addPhoto();
     view.initSlidePhoto();
-    model.addPhoto();
 }

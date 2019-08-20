@@ -1,5 +1,3 @@
-const fileBtnArray = document.querySelectorAll('[data-file-btn]');
-
 const model = {
     placeMarksArray: [],
     placeData: {
@@ -62,13 +60,6 @@ const model = {
             alert("Данные о месте обновленны");
         } else {
             alert("Ошибка HTTP: " + response.status);
-        }
-    },
-    addPhoto(){
-        for (const element of fileBtnArray) {
-            element.addEventListener('click', (e)=>{
-                e.preventDefault();
-            });
         }
     }
 };
