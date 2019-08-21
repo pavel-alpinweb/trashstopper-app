@@ -70,6 +70,7 @@ async function init () {
         if(isSuccess){
             placemark = view.createPlacemark(map, coords, placeData.placeName, placeData.id);
             cluster.add(placemark);
+            dataFilesArray = [];
         } 
         view.hideForm();
     });
@@ -108,11 +109,8 @@ async function init () {
         for (const input of fileInputsArray) {
             input.addEventListener('change', (e)=>{
                 const loadingFilesArray = e.target.files;
-                const reader = new FileReader();
-                let validFiles = [];
                 let filesUrls = [];
                 let inputDataName = e.target.dataset.file;
-                reader.onload = function () {
                     for (const file of loadingFilesArray) {
                         let isValidType = (file.type == 'image/png'
                             || file.type == 'image/jpeg'
@@ -125,24 +123,22 @@ async function init () {
                             alert(`Файл не должен привышать размер 2mb. 
                             Файл: ${file.name} имеет слишком большой размер.`);
                         } else {
-                            filesUrls.push(`/content/${file.name}`);
-                            validFiles.push(file);
-                            view.displayUserImage(inputDataName, reader.result);
+                            const reader = new FileReader();
+                            reader.onload = function () {
+                                filesUrls.push(`/content/${file.name}`);
+                                view.displayUserImage(inputDataName, reader.result);
+                                dataFilesArray.push(file);
+                            };
+                            reader.readAsDataURL(file);
                         }
                     }
-                    if(inputDataName == "trash"){
+                    if(inputDataName == "trash") {
                         trashFilesArray = filesUrls;
                     } else if (inputDataName == "clean") {
                         cleanFilesArray = filesUrls;
                     } else if (inputDataName == "boxes") {
                         boxesFilesArray = filesUrls;
                     }
-                    dataFilesArray = validFiles;
-                }
-                for (const file of loadingFilesArray) {
-                    reader.onload = function (){}
-                    reader.readAsDataURL(file);
-                }
             }); 
         }
     }
