@@ -179,7 +179,7 @@ const view = {
         const imageLoadContainer = document.querySelector(`[data-image-container="${container}"]`);
         const image = document.createElement('IMG');
         image.setAttribute('src', url);
-        image.className='photo-preview';
+        image.className='photo-preview photo-preview--small';
         imageLoadContainer.append(image);
     }
 };
