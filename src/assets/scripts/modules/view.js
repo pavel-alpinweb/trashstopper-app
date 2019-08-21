@@ -23,6 +23,7 @@ const prevSlideBtn = document.querySelector('[data-control="prev-slide"]');
 const sendBtn = document.querySelector('[data-role="send-data"]');
 const updateBtn = document.querySelector('[data-role="update-data"]');
 
+
 let galleryArray = [];
 
 let trashGalleryArray = [];
@@ -173,6 +174,13 @@ const view = {
             const src = galleryArray[index];
             gallerySlide.src = src;
         });
+    },
+    displayUserImage(container, url){
+        const imageLoadContainer = document.querySelector(`[data-image-container="${container}"]`);
+        const image = document.createElement('IMG');
+        image.setAttribute('src', url);
+        image.className='photo-preview';
+        imageLoadContainer.append(image);
     }
 };
 
