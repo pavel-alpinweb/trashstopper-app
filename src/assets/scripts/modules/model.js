@@ -37,10 +37,11 @@ const model = {
         let response = await fetch('/placemark', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json;charset=utf-8'
+            'Content-Type': 'multipart/form-data'
           },
-          body: JSON.stringify(data)
+          body: data
         });
+        console.log(data);
         if (response.ok) {
             return true;
         } else {
@@ -52,7 +53,7 @@ const model = {
         let response = await fetch('/placemark/' + data.id, {
           method: 'PUT',
           headers: {
-            'Content-Type': 'application/json;charset=utf-8'
+            'Content-Type': 'multipart/form-data'
           },
           body: JSON.stringify(data)
         });

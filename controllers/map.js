@@ -1,4 +1,60 @@
 const db = require("../models/db");
+const multiparty = require('multiparty');
+const fs = require("fs");
+
+function savePlaceData(req, res, dbfunction){
+    // create a form to begin parsing
+    const form = new multiparty.Form();
+    let uploadFile = {uploadPath: ''};
+    let errors = [];
+    let place = {};
+    form.on('error', function(err){
+        if(fs.existsSync(uploadFile.uploadPath)) {
+            fs.unlinkSync(uploadFile.uploadPath);
+            console.log(err);
+        }
+    });
+
+    form.on('close', function() {
+        if(errors.length == 0) {
+            dbfunction(place);
+        } else {
+            if(fs.existsSync(uploadFile.uploadPath)) {
+                fs.unlinkSync(uploadFile.uploadPath);
+            }
+            console.log(errors);
+            res.sendStatus(500);
+        }
+    });
+
+    form.on('field', function (name, value) {
+        if(name == "isNew") {
+            place[name] = Boolean(value);
+        } else if(name == "id") {
+            place[name] == Number(value)
+        } else {
+            place[name] = value;
+        }
+    });
+
+    // listen on part event for image file
+    form.on('part', function(part) {
+        if(part.filename){
+            uploadFile.path = "./public/content/" + part.filename;
+            uploadFile.filename = part.filename;
+            if(errors.length == 0) {
+                var out = fs.createWriteStream(uploadFile.path);
+                part.pipe(out);
+            }
+            else {
+                part.resume();
+            }
+        }
+    });
+
+    // parse the form
+    form.parse(req); 
+}
 
 module.exports.get = function(req, res) {
     res.render("pages/index");
@@ -10,14 +66,15 @@ module.exports.getPlacaMarks = function(req, res){
 };
 
 module.exports.createPlace = function(req, res){
-    const place = req.body;
-    const placeMark = {
-        coords: place.coords,
-        id: place.id,
-        placeName: place.placeName
-    };
-    db.get("places").push(place).write();
-    db.get("placeMarks").push(placeMark).write();
+    savePlaceData(req, res, (place)=>{
+        const placeMark = {
+            coords: place.coords,
+            id: place.id,
+            placeName: place.placeName
+        };
+        db.get("places").push(place).write();
+        db.get("placeMarks").push(placeMark).write();
+    });
     res.sendStatus(200);
 };
 

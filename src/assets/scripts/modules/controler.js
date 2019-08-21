@@ -1,8 +1,6 @@
 import view from './view';
 import model from './model';
 import PlaceData from './placeData';
-
-// Дождёмся загрузки API и готовности DOM.
 ymaps.ready(init);
 async function init () {
     
@@ -19,11 +17,8 @@ async function init () {
     const fileBtnArray = document.querySelectorAll('[data-role="file-btn"]');
 
     const fileInputsArray = document.querySelectorAll('[data-input-file]');
-    // Создание экземпляра карты и его привязка к контейнеру с
-    // заданным id ("map").
+
     const map = new ymaps.Map('map', {
-        // При инициализации карты обязательно нужно указать
-        // её центр и коэффициент масштабирования.
         center: [42.8736, 74.6057], // Бишкек
         zoom: 12
     }, {
