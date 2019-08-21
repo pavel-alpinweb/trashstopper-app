@@ -9,7 +9,9 @@ async function init () {
     let coords;
     let addressText;
     let placemark;
-    let filesArray = [];
+    let trashFilesArray = [];
+    let cleanFilesArray = [];
+    let boxesFilesArray = [];
     
     const nameInput = document.querySelector('[data-role="place-name"]');
     const idElem = document.querySelector('[data-id]');
@@ -57,6 +59,9 @@ async function init () {
         placeData.placeName = nameInput.value;
         placeData.placeType = document.querySelector('input[name="place-type"]:checked').value;
         placeData.isNew = false;
+        placeData.imageArray.trash = trashFilesArray;
+        placeData.imageArray.clean = cleanFilesArray;
+        placeData.imageArray.boxes = boxesFilesArray;
         let isSuccess = await model.postPlaceData(placeData);
         if(isSuccess){
             placemark = view.createPlacemark(map, coords, placeData.placeName, placeData.id);
@@ -101,6 +106,7 @@ async function init () {
                 const loadingFilesArray = e.target.files;
                 const reader = new FileReader();
                 let validFiles = [];
+                let inputDataName = e.target.dataset.file;
                 reader.onload = function () {
                     for (const file of loadingFilesArray) {
                         let isValidType = (file.type == 'image/png'
@@ -114,10 +120,16 @@ async function init () {
                             alert(`Файл не должен привышать размер 2mb. 
                             Файл: ${file.name} имеет слишком большой размер.`);
                         } else {
-                            validFiles.push(file);
+                            validFiles.push(`/content/${file.name}`);
                         }
                     }
-                    filesArray = validFiles;
+                    if(inputDataName == "trash"){
+                        trashFilesArray = validFiles;
+                    } else if (inputDataName == "clean") {
+                        cleanFilesArray = validFiles;
+                    } else if (inputDataName == "boxes") {
+                        boxesFilesArray = validFiles;
+                    }
                 }
                 for (const file of loadingFilesArray) {
                     reader.readAsDataURL(file);
