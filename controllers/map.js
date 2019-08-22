@@ -17,6 +17,9 @@ function savePlaceData(req, res, dbfunction){
 
     form.on('close', function() {
         if(errors.length == 0) {
+            place.id = Number(place.id);
+            place.coords = JSON.parse(place.coords);
+            place.imageArray = JSON.parse(place.imageArray);
             dbfunction(place);
         } else {
             if(fs.existsSync(uploadFile.uploadPath)) {
@@ -28,10 +31,9 @@ function savePlaceData(req, res, dbfunction){
     });
 
     form.on('field', function (name, value) {
+        console.log(`${name} : ${value}`);
         if(name == "isNew") {
             place[name] = Boolean(value);
-        } else if(name == "id") {
-            place[name] == Number(value)
         } else {
             place[name] = value;
         }

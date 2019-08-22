@@ -33,15 +33,24 @@ const model = {
             return false;
         }
     },
-    async postPlaceData(data){
+    async postPlaceData(place){
+        var data = new FormData();
+        data.append('coords', JSON.stringify(place.coords));
+        data.append('mapAddress', place.mapAddress);
+        data.append('placeName', place.placeName);
+        data.append('id', place.id);
+        data.append('placeType', place.placeType);
+        data.append('isNew', place.isNew);
+        data.append('imageArray', JSON.stringify(place.imageArray));
+        if(place.files){
+            data.append('files', place.files);
+        }
+        console.log(data);
+        console.log(place);
         let response = await fetch('/placemark', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          },
           body: data
         });
-        console.log(data);
         if (response.ok) {
             return true;
         } else {

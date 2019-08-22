@@ -31,6 +31,14 @@
       ],
       "id": 1566039202846,
       "placeName": "БОТАНИЧЕСКИЙ САД"
+    },
+    {
+      "coords": [
+        42.837353091982685,
+        74.57033775634764
+      ],
+      "id": 1566454279582,
+      "placeName": "Test 5"
     }
   ],
   "places": [
@@ -92,6 +100,22 @@
       "id": 1566039202846,
       "placeType": "trashPlace",
       "isNew": false,
+      "imageArray": {
+        "trash": [],
+        "clean": [],
+        "boxes": []
+      }
+    },
+    {
+      "coords": [
+        42.837353091982685,
+        74.57033775634764
+      ],
+      "mapAddress": "Киргизия, Бишкек, улица Тыналиева, 38/1",
+      "placeName": "Test 5",
+      "id": 1566454279582,
+      "placeType": "cleanPlace",
+      "isNew": true,
       "imageArray": {
         "trash": [],
         "clean": [],
