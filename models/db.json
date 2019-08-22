@@ -47,6 +47,14 @@
       ],
       "id": 1566457938569,
       "placeName": "ЮЖНОЕ КЛАДБИЩЕ"
+    },
+    {
+      "coords": [
+        42.89266206948912,
+        74.49789665527342
+      ],
+      "id": 1566459583846,
+      "placeName": "Озеро"
     }
   ],
   "places": [
@@ -59,7 +67,7 @@
       "placeName": "БОТАНИЧЕСКИЙ САД",
       "id": 1566457518010,
       "placeType": "trashPlace",
-      "isNew": true,
+      "isNew": false,
       "imageArray": {
         "trash": [
           "/content/trash1.jpg",
@@ -80,7 +88,7 @@
       "placeName": "Ала-Арчинское вднх",
       "id": 1566457568710,
       "placeType": "cleanPlace",
-      "isNew": true,
+      "isNew": false,
       "imageArray": {
         "trash": [
           "/content/trash1.jpg",
@@ -106,7 +114,7 @@
       "placeName": "НОВОПОКРОВКА",
       "id": 1566457593031,
       "placeType": "trashBox",
-      "isNew": true,
+      "isNew": false,
       "imageArray": {
         "trash": [
           "/content/trash1.jpg",
@@ -135,7 +143,7 @@
       "placeName": "Астрал",
       "id": 1566457748528,
       "placeType": "cleanPlace",
-      "isNew": true,
+      "isNew": false,
       "imageArray": {
         "trash": [
           "/content/trash1.jpg",
@@ -165,7 +173,7 @@
       "placeName": "Астрал 2",
       "id": 1566457899140,
       "placeType": "cleanPlace",
-      "isNew": true,
+      "isNew": false,
       "imageArray": {
         "trash": [],
         "clean": [
@@ -186,7 +194,7 @@
       "placeName": "ЮЖНОЕ КЛАДБИЩЕ",
       "id": 1566457938569,
       "placeType": "cleanPlace",
-      "isNew": true,
+      "isNew": false,
       "imageArray": {
         "trash": [
           "/content/trash1.jpg",
@@ -200,6 +208,22 @@
           "/content/clean2.jpg",
           "/content/clean1.jpg"
         ],
+        "boxes": []
+      }
+    },
+    {
+      "coords": [
+        42.89266206948912,
+        74.49789665527342
+      ],
+      "mapAddress": "Киргизия, Чуйская область",
+      "placeName": "Озеро",
+      "id": 1566459583846,
+      "placeType": "trashPlace",
+      "isNew": false,
+      "imageArray": {
+        "trash": [],
+        "clean": [],
         "boxes": []
       }
     }
