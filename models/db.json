@@ -6,7 +6,7 @@
         74.63591240234373
       ],
       "id": 1566457518010,
-      "placeName": "БОТАНИЧЕСКИЙ САД"
+      "placeName": "САД"
     },
     {
       "coords": [
@@ -64,18 +64,25 @@
         74.63591240234373
       ],
       "mapAddress": "Киргизия, Бишкек, Ботанический сад Национальной академии наук Кыргызской Республики",
-      "placeName": "БОТАНИЧЕСКИЙ САД",
+      "placeName": "САД",
       "id": 1566457518010,
-      "placeType": "trashPlace",
+      "placeType": "cleanPlace",
       "isNew": false,
       "imageArray": {
         "trash": [
           "/content/trash1.jpg",
           "/content/trash2.jpg",
           "/content/trash3.jpg",
-          "/content/trash4.jpg"
+          "/content/trash4.jpg",
+          "/content/magdalena-swiderska-05-desk-books-b.jpg",
+          "/content/magdalena-swiderska-06-library-big-books.jpg"
         ],
-        "clean": [],
+        "clean": [
+          "/content/clean3.jpg",
+          "/content/clean4.jpg",
+          "/content/clean2.jpg",
+          "/content/clean1.jpg"
+        ],
         "boxes": []
       }
     },

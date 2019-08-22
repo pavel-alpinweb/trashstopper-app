@@ -80,14 +80,11 @@ async function init () {
     updateBtn.addEventListener('click', async (e)=>{
         e.preventDefault();
         let placeData = model.placeData;
-        placeData.id = idElem.dataset.id;
-        placeData.mapAddress = addressText;
-        placeData.coords = placeData.coords;
         placeData.placeName = nameInput.value;
         placeData.placeType = document.querySelector('input[name="place-type"]:checked').value;
-        placeData.imageArray.trash = trashFilesArray;
-        placeData.imageArray.clean = cleanFilesArray;
-        placeData.imageArray.boxes = boxesFilesArray;
+        placeData.imageArray.trash = placeData.imageArray.trash.concat(trashFilesArray);
+        placeData.imageArray.clean = placeData.imageArray.clean.concat(cleanFilesArray);
+        placeData.imageArray.boxes = placeData.imageArray.boxes.concat(boxesFilesArray);
         if(dataFilesArray.length > 0){
             placeData.files = dataFilesArray;
         }

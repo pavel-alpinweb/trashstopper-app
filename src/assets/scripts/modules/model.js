@@ -73,7 +73,7 @@ const model = {
                 data.append('files[]', file);
             }
         }
-        let response = await fetch('/placemark/' + data.id, {
+        let response = await fetch('/placemark/' + place.id, {
           method: 'PUT',
           body: data
         });

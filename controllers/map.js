@@ -32,6 +32,7 @@ function savePlaceData(req, res, dbfunction){
     });
 
     form.on('field', function (name, value) {
+        console.log(`${name} : ${value}`);
         place[name] = value;
     });
 
@@ -79,7 +80,13 @@ module.exports.createPlace = function(req, res){
 module.exports.updatePlace = function(req, res){
     const id = Number(req.params.id);
     savePlaceData(req, res, (place)=>{
+        const placeMark = {
+            coords: place.coords,
+            id: place.id,
+            placeName: place.placeName
+        };
         db.get("places").find({ id: id }).assign(place).write();
+        db.get("placeMarks").find({ id: id }).assign(placeMark).write();
     });
     res.sendStatus(200);
 };
