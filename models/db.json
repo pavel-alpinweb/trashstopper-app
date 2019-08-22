@@ -55,6 +55,14 @@
       ],
       "id": 1566459583846,
       "placeName": "Озеро"
+    },
+    {
+      "coords": [
+        42.837941284193285,
+        74.59546988701992
+      ],
+      "id": 1566461342354,
+      "placeName": "Парк Ататюрка"
     }
   ],
   "places": [
@@ -237,6 +245,27 @@
           "/content/magdalena-swiderska-05-desk-books-b.jpg",
           "/content/magdalena-swiderska-06-library-big-books.jpg"
         ]
+      }
+    },
+    {
+      "coords": [
+        42.837941284193285,
+        74.59546988701992
+      ],
+      "mapAddress": "Киргизия, Бишкек, парк имени Кемаля Ататюрка",
+      "placeName": "Парк Ататюрка",
+      "id": 1566461342354,
+      "placeType": "trashPlace",
+      "isNew": false,
+      "imageArray": {
+        "trash": [
+          "/content/trash1.jpg",
+          "/content/trash2.jpg",
+          "/content/trash3.jpg",
+          "/content/trash4.jpg"
+        ],
+        "clean": [],
+        "boxes": []
       }
     }
   ]
