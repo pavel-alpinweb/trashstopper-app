@@ -226,12 +226,17 @@
       "mapAddress": "Киргизия, Чуйская область",
       "placeName": "Озеро",
       "id": 1566459583846,
-      "placeType": "trashPlace",
+      "placeType": "trashBox",
       "isNew": false,
       "imageArray": {
         "trash": [],
         "clean": [],
-        "boxes": []
+        "boxes": [
+          "/content/box1.jpg",
+          "/content/box2.jpg",
+          "/content/magdalena-swiderska-05-desk-books-b.jpg",
+          "/content/magdalena-swiderska-06-library-big-books.jpg"
+        ]
       }
     }
   ]
