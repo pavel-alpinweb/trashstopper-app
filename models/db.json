@@ -1,4 +1,144 @@
 {
-  "placeMarks": [],
-  "places": []
+  "placeMarks": [
+    {
+      "coords": [
+        42.82876183434575,
+        74.63591240234373
+      ],
+      "id": 1566457518010,
+      "placeName": "БОТАНИЧЕСКИЙ САД"
+    },
+    {
+      "coords": [
+        42.99376284998534,
+        74.55753272271328
+      ],
+      "id": 1566457568710,
+      "placeName": "Ала-Арчинское вднх"
+    },
+    {
+      "coords": [
+        42.87027374319348,
+        74.73863547539884
+      ],
+      "id": 1566457593031,
+      "placeName": "НОВОПОКРОВКА"
+    },
+    {
+      "coords": [
+        42.90132715130024,
+        74.62499564385588
+      ],
+      "id": 1566457748528,
+      "placeName": "Астрал"
+    }
+  ],
+  "places": [
+    {
+      "coords": [
+        42.82876183434575,
+        74.63591240234373
+      ],
+      "mapAddress": "Киргизия, Бишкек, Ботанический сад Национальной академии наук Кыргызской Республики",
+      "placeName": "БОТАНИЧЕСКИЙ САД",
+      "id": 1566457518010,
+      "placeType": "trashPlace",
+      "isNew": true,
+      "imageArray": {
+        "trash": [
+          "/content/trash1.jpg",
+          "/content/trash2.jpg",
+          "/content/trash3.jpg",
+          "/content/trash4.jpg"
+        ],
+        "clean": [],
+        "boxes": []
+      }
+    },
+    {
+      "coords": [
+        42.99376284998534,
+        74.55753272271328
+      ],
+      "mapAddress": "Киргизия, Чуйская область",
+      "placeName": "Ала-Арчинское вднх",
+      "id": 1566457568710,
+      "placeType": "cleanPlace",
+      "isNew": true,
+      "imageArray": {
+        "trash": [
+          "/content/trash1.jpg",
+          "/content/trash2.jpg",
+          "/content/trash3.jpg",
+          "/content/trash4.jpg"
+        ],
+        "clean": [
+          "/content/clean3.jpg",
+          "/content/clean4.jpg",
+          "/content/clean2.jpg",
+          "/content/clean1.jpg"
+        ],
+        "boxes": []
+      }
+    },
+    {
+      "coords": [
+        42.87027374319348,
+        74.73863547539884
+      ],
+      "mapAddress": "Киргизия, Чуйская область, село Новопокровка",
+      "placeName": "НОВОПОКРОВКА",
+      "id": 1566457593031,
+      "placeType": "trashBox",
+      "isNew": true,
+      "imageArray": {
+        "trash": [
+          "/content/trash1.jpg",
+          "/content/trash2.jpg",
+          "/content/trash3.jpg",
+          "/content/trash4.jpg"
+        ],
+        "clean": [
+          "/content/clean3.jpg",
+          "/content/clean4.jpg",
+          "/content/clean2.jpg",
+          "/content/clean1.jpg"
+        ],
+        "boxes": [
+          "/content/box1.jpg",
+          "/content/box2.jpg"
+        ]
+      }
+    },
+    {
+      "coords": [
+        42.90132715130024,
+        74.62499564385588
+      ],
+      "mapAddress": "Киргизия, Бишкек, Карагачёвая роща",
+      "placeName": "Астрал",
+      "id": 1566457748528,
+      "placeType": "cleanPlace",
+      "isNew": true,
+      "imageArray": {
+        "trash": [
+          "/content/trash1.jpg",
+          "/content/trash2.jpg",
+          "/content/trash3.jpg",
+          "/content/trash4.jpg"
+        ],
+        "clean": [
+          "/content/magdalena-swiderska-05-desk-books-b.jpg",
+          "/content/magdalena-swiderska-06-library-big-books.jpg",
+          "/content/magdalena-swiderska-07-carpent-flowers.jpg",
+          "/content/magdalena-swiderska-08-dante-cat.jpg",
+          "/content/magdalena-swiderska-09-kira-cat2.jpg"
+        ],
+        "boxes": [
+          "/content/box1.jpg",
+          "/content/box2.jpg"
+        ]
+      }
+    }
+  ]
 }
