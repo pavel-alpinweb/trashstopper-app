@@ -43,7 +43,9 @@ const model = {
         data.append('isNew', place.isNew);
         data.append('imageArray', JSON.stringify(place.imageArray));
         if(place.files){
-            data.append('files', place.files);
+            for (const file of place.files) {
+                data.append('files[]', file);
+            }
         }
         console.log(data);
         console.log(place);

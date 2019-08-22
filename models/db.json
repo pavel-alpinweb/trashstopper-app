@@ -39,6 +39,14 @@
       ],
       "id": 1566454279582,
       "placeName": "Test 5"
+    },
+    {
+      "coords": [
+        42.90301117140501,
+        74.62320946044919
+      ],
+      "id": 1566454653218,
+      "placeName": "КАРАГАЧЁВАЯ РОЩА"
     }
   ],
   "places": [
@@ -119,6 +127,28 @@
       "imageArray": {
         "trash": [],
         "clean": [],
+        "boxes": []
+      }
+    },
+    {
+      "coords": [
+        42.90301117140501,
+        74.62320946044919
+      ],
+      "mapAddress": "Киргизия, Бишкек, Карагачёвая роща",
+      "placeName": "КАРАГАЧЁВАЯ РОЩА",
+      "id": 1566454653218,
+      "placeType": "cleanPlace",
+      "isNew": true,
+      "imageArray": {
+        "trash": [
+          "/content/trash1.jpg",
+          "/content/trash2.jpg"
+        ],
+        "clean": [
+          "/content/clean2.jpg",
+          "/content/clean1.jpg"
+        ],
         "boxes": []
       }
     }
