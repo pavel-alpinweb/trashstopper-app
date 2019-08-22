@@ -67,6 +67,9 @@ async function init () {
             placemark = view.createPlacemark(map, coords, placeData.placeName, placeData.id);
             cluster.add(placemark);
             dataFilesArray = [];
+            trashFilesArray = [];
+            cleanFilesArray = [];
+            boxesFilesArray = [];
             for (const container of imageLoadContainerArray) {
                 container.innerHTML = "";
             }

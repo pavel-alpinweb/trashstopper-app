@@ -31,6 +31,22 @@
       ],
       "id": 1566457748528,
       "placeName": "Астрал"
+    },
+    {
+      "coords": [
+        42.84403789790471,
+        74.713921648779
+      ],
+      "id": 1566457899140,
+      "placeName": "Астрал 2"
+    },
+    {
+      "coords": [
+        42.80486638000985,
+        74.55221663168915
+      ],
+      "id": 1566457938569,
+      "placeName": "ЮЖНОЕ КЛАДБИЩЕ"
     }
   ],
   "places": [
@@ -138,6 +154,53 @@
           "/content/box1.jpg",
           "/content/box2.jpg"
         ]
+      }
+    },
+    {
+      "coords": [
+        42.84403789790471,
+        74.713921648779
+      ],
+      "mapAddress": "Киргизия, Чуйская область",
+      "placeName": "Астрал 2",
+      "id": 1566457899140,
+      "placeType": "cleanPlace",
+      "isNew": true,
+      "imageArray": {
+        "trash": [],
+        "clean": [
+          "/content/clean3.jpg",
+          "/content/clean4.jpg",
+          "/content/clean2.jpg",
+          "/content/clean1.jpg"
+        ],
+        "boxes": []
+      }
+    },
+    {
+      "coords": [
+        42.80486638000985,
+        74.55221663168915
+      ],
+      "mapAddress": "Киргизия, Чуйская область, Южное кладбище",
+      "placeName": "ЮЖНОЕ КЛАДБИЩЕ",
+      "id": 1566457938569,
+      "placeType": "cleanPlace",
+      "isNew": true,
+      "imageArray": {
+        "trash": [
+          "/content/trash1.jpg",
+          "/content/trash2.jpg",
+          "/content/trash3.jpg",
+          "/content/trash4.jpg"
+        ],
+        "clean": [
+          "/content/clean3.jpg",
+          "/content/clean4.jpg",
+          "/content/clean2.jpg",
+          "/content/clean1.jpg"
+        ],
+        "boxes": []
       }
     }
   ]
