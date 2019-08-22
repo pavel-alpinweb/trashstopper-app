@@ -47,6 +47,22 @@
       ],
       "id": 1566454653218,
       "placeName": "КАРАГАЧЁВАЯ РОЩА"
+    },
+    {
+      "coords": [
+        42.86791810349256,
+        74.73513267822263
+      ],
+      "id": 1566456139523,
+      "placeName": "НОВОПОКРОВКА"
+    },
+    {
+      "coords": [
+        42.992068322601206,
+        74.55774486641971
+      ],
+      "id": 1566456313010,
+      "placeName": "Ала-Арчинское вднх"
     }
   ],
   "places": [
@@ -150,6 +166,50 @@
           "/content/clean1.jpg"
         ],
         "boxes": []
+      }
+    },
+    {
+      "coords": [
+        42.86791810349256,
+        74.73513267822263
+      ],
+      "mapAddress": "Киргизия, Чуйская область, село Новопокровка",
+      "placeName": "НОВОПОКРОВКА",
+      "id": 1566456139523,
+      "placeType": "trashBox",
+      "isNew": true,
+      "imageArray": {
+        "trash": [],
+        "clean": [],
+        "boxes": [
+          "/content/box1.jpg",
+          "/content/box2.jpg"
+        ]
+      }
+    },
+    {
+      "coords": [
+        42.992068322601206,
+        74.55774486641971
+      ],
+      "mapAddress": "Киргизия, Чуйская область",
+      "placeName": "Ала-Арчинское вднх",
+      "id": 1566456313010,
+      "placeType": "trashPlace",
+      "isNew": true,
+      "imageArray": {
+        "trash": [
+          "/content/magdalena-swiderska-05-desk-books-b.jpg",
+          "/content/magdalena-swiderska-06-library-big-books.jpg",
+          "/content/magdalena-swiderska-07-carpent-flowers.jpg",
+          "/content/magdalena-swiderska-08-dante-cat.jpg",
+          "/content/magdalena-swiderska-09-kira-cat2.jpg"
+        ],
+        "clean": [],
+        "boxes": [
+          "/content/box1.jpg",
+          "/content/box2.jpg"
+        ]
       }
     }
   ]

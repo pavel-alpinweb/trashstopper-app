@@ -17,6 +17,7 @@ async function init () {
     const fileBtnArray = document.querySelectorAll('[data-role="file-btn"]');
 
     const fileInputsArray = document.querySelectorAll('[data-input-file]');
+    const imageLoadContainerArray = document.querySelectorAll(`[data-image-container]`);
 
     const map = new ymaps.Map('map', {
         center: [42.8736, 74.6057], // Бишкек
@@ -66,6 +67,9 @@ async function init () {
             placemark = view.createPlacemark(map, coords, placeData.placeName, placeData.id);
             cluster.add(placemark);
             dataFilesArray = [];
+            for (const container of imageLoadContainerArray) {
+                container.innerHTML = "";
+            }
         } 
         view.hideForm();
     });
