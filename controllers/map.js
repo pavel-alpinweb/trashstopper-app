@@ -18,7 +18,7 @@ function savePlaceData(req, res, dbfunction){
     form.on('close', function() {
         if(errors.length == 0) {
             place.id = Number(place.id);
-            place.isNew = Boolean(place.isNew);
+            place.isNew = false;
             place.coords = JSON.parse(place.coords);
             place.imageArray = JSON.parse(place.imageArray);
             dbfunction(place);
@@ -72,6 +72,14 @@ module.exports.createPlace = function(req, res){
         };
         db.get("places").push(place).write();
         db.get("placeMarks").push(placeMark).write();
+    });
+    res.sendStatus(200);
+};
+
+module.exports.updatePlace = function(req, res){
+    const id = Number(req.params.id);
+    savePlaceData(req, res, (place)=>{
+        db.get("places").find({ id: id }).assign(place).write();
     });
     res.sendStatus(200);
 };

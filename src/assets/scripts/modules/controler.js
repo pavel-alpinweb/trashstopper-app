@@ -77,15 +77,30 @@ async function init () {
         view.hideForm();
     });
     const updateBtn = document.querySelector('[data-role="update-data"]');
-    updateBtn.addEventListener('click', (e)=>{
+    updateBtn.addEventListener('click', async (e)=>{
         e.preventDefault();
         let placeData = model.placeData;
         placeData.id = idElem.dataset.id;
         placeData.mapAddress = addressText;
-        placeData.coords = coords;
+        placeData.coords = placeData.coords;
         placeData.placeName = nameInput.value;
         placeData.placeType = document.querySelector('input[name="place-type"]:checked').value;
-        model.postPlaceData(placeData);
+        placeData.imageArray.trash = trashFilesArray;
+        placeData.imageArray.clean = cleanFilesArray;
+        placeData.imageArray.boxes = boxesFilesArray;
+        if(dataFilesArray.length > 0){
+            placeData.files = dataFilesArray;
+        }
+        let isSuccess = await model.updatePlaceData(placeData);
+        if(isSuccess){
+            dataFilesArray = [];
+            trashFilesArray = [];
+            cleanFilesArray = [];
+            boxesFilesArray = [];
+            for (const container of imageLoadContainerArray) {
+                container.innerHTML = "";
+            }
+        } 
         view.hideForm();
     });
     document.body.addEventListener('click',async (e)=>{
