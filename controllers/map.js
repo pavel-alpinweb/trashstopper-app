@@ -32,7 +32,6 @@ function savePlaceData(req, res, dbfunction){
     });
 
     form.on('field', function (name, value) {
-        console.log(`${name} : ${value}`);
         place[name] = value;
     });
 
