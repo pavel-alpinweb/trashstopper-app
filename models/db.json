@@ -1,4 +1,35 @@
 {
-  "placeMarks": [],
-  "places": []
+  "placeMarks": [
+    {
+      "coords": [
+        42.825982052273126,
+        74.634882434082
+      ],
+      "id": 1566623242803,
+      "placeName": "Набережная рядом с бот.садом"
+    }
+  ],
+  "places": [
+    {
+      "coords": [
+        42.825982052273126,
+        74.634882434082
+      ],
+      "mapAddress": "Киргизия, Бишкек, Ботанический сад Национальной академии наук Кыргызской Республики",
+      "placeName": "Набережная рядом с бот.садом",
+      "id": 1566623242803,
+      "placeType": "trashPlace",
+      "isNew": false,
+      "imageArray": {
+        "trash": [
+          "/content/trash1.jpg",
+          "/content/trash2.jpg",
+          "/content/trash3.jpg",
+          "/content/trash4.jpg"
+        ],
+        "clean": [],
+        "boxes": []
+      }
+    }
+  ]
 }
