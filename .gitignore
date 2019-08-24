@@ -8,7 +8,7 @@ Desktop.ini
 /node_modules/*
 /build/
 /vscode/
-
+/models/db.json
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
