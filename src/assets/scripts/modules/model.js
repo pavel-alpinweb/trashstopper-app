@@ -33,7 +33,7 @@ const model = {
             return false;
         }
     },
-    async postPlaceData(place){
+    pushFiledstoFD(place){
         var data = new FormData();
         data.append('coords', JSON.stringify(place.coords));
         data.append('mapAddress', place.mapAddress);
@@ -47,6 +47,10 @@ const model = {
                 data.append('files[]', file);
             }
         }
+        return data;
+    },
+    async postPlaceData(place){
+        var data = this.pushFiledstoFD(place);
         let response = await fetch('/placemark', {
           method: 'POST',
           body: data
@@ -60,14 +64,7 @@ const model = {
         }
     },
     async updatePlaceData(place){
-        var data = new FormData();
-        data.append('coords', JSON.stringify(place.coords));
-        data.append('mapAddress', place.mapAddress);
-        data.append('placeName', place.placeName);
-        data.append('id', place.id);
-        data.append('placeType', place.placeType);
-        data.append('isNew', place.isNew);
-        data.append('imageArray', JSON.stringify(place.imageArray));
+        var data = this.pushFiledstoFD(place);
         if(place.files){
             for (const file of place.files) {
                 data.append('files[]', file);

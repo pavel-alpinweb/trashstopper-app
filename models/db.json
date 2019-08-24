@@ -63,6 +63,14 @@
       ],
       "id": 1566461342354,
       "placeName": "Парк Ататюрка"
+    },
+    {
+      "coords": [
+        42.8656451973655,
+        74.5620980102539
+      ],
+      "id": 1566621936042,
+      "placeName": "astral 4"
     }
   ],
   "places": [
@@ -265,6 +273,32 @@
           "/content/trash4.jpg"
         ],
         "clean": [],
+        "boxes": []
+      }
+    },
+    {
+      "coords": [
+        42.8656451973655,
+        74.5620980102539
+      ],
+      "mapAddress": "Киргизия, Бишкек, Ленинский район",
+      "placeName": "astral 4",
+      "id": 1566621936042,
+      "placeType": "cleanPlace",
+      "isNew": false,
+      "imageArray": {
+        "trash": [
+          "/content/trash1.jpg",
+          "/content/trash3.jpg",
+          "/content/trash2.jpg",
+          "/content/trash4.jpg"
+        ],
+        "clean": [
+          "/content/clean4.jpg",
+          "/content/clean3.jpg",
+          "/content/clean2.jpg",
+          "/content/clean1.jpg"
+        ],
         "boxes": []
       }
     }
