@@ -33,6 +33,7 @@ function savePlaceData(req, res, dbfunction){
 
     form.on('field', function (name, value) {
         place[name] = value;
+        console.log(`${name} : ${value}`);
     });
 
     // listen on part event for image file
@@ -70,6 +71,8 @@ module.exports.createPlace = function(req, res){
             id: place.id,
             placeName: place.placeName
         };
+        console.log(place);
+        console.log(placeMark);
         db.get("places").push(place).write();
         db.get("placeMarks").push(placeMark).write();
     });
