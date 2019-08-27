@@ -49,6 +49,7 @@ async function init () {
     const sendBtn = document.querySelector('[data-role="send-data"]');
     sendBtn.addEventListener('click', async (e)=>{
         e.preventDefault();
+        view.showPreloader();
         let placeData = new PlaceData;
         placeData.id = Date.now();
         placeData.mapAddress = addressText;
@@ -74,11 +75,13 @@ async function init () {
                 container.innerHTML = "";
             }
         } 
-        view.hideForm();
+        await view.hidePreloader();
+        await view.hideForm();
     });
     const updateBtn = document.querySelector('[data-role="update-data"]');
     updateBtn.addEventListener('click', async (e)=>{
         e.preventDefault();
+        view.showPreloader();
         let placeData = model.placeData;
         placeData.placeName = nameInput.value;
         placeData.placeType = document.querySelector('input[name="place-type"]:checked').value;
@@ -98,7 +101,8 @@ async function init () {
                 container.innerHTML = "";
             }
         } 
-        view.hideForm();
+        await view.hidePreloader();
+        await view.hideForm();
     });
     document.body.addEventListener('click',async (e)=>{
         if(e.target.dataset.role == "getPlaceData"){

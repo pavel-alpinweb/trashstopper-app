@@ -22,7 +22,7 @@ const prevSlideBtn = document.querySelector('[data-control="prev-slide"]');
 
 const sendBtn = document.querySelector('[data-role="send-data"]');
 const updateBtn = document.querySelector('[data-role="update-data"]');
-
+const preloader = document.querySelector('[data-role="preloader"]');
 
 let galleryArray = [];
 
@@ -174,6 +174,12 @@ const view = {
             const src = galleryArray[index];
             gallerySlide.src = src;
         });
+    },
+    showPreloader(){
+        preloader.classList.remove("hide");
+    },
+    hidePreloader(){
+        preloader.classList.add("hide");
     },
     displayUserImage(container, url){
         const imageLoadContainer = document.querySelector(`[data-image-container="${container}"]`);
